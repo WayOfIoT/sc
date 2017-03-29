@@ -1,0 +1,5 @@
+"blueteeth.obj",
+"sc.obj",
+"delay.obj" 
+TO "sc-project" 
+RAMSIZE(256) 

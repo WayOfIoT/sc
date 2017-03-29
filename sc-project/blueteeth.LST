@@ -1,0 +1,32 @@
+C51 COMPILER V9.00   BLUETEETH                                                             03/29/2017 21:10:29 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE BLUETEETH
+OBJECT MODULE PLACED IN blueteeth.OBJ
+COMPILER INVOKED BY: D:\SoftwareInstall\dev\keil\C51\BIN\C51.EXE blueteeth.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "sc.h"
+   2          
+   3          
+   4          
+   5          
+   6          void init_blueteeth()
+   7          {
+   8   1              ;
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      1    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
