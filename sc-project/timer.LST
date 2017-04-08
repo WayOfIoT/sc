@@ -1,0 +1,115 @@
+C51 COMPILER V9.00   TIMER                                                                 04/08/2017 21:36:42 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN timer.OBJ
+COMPILER INVOKED BY: D:\SoftwareInstall\dev\keil\C51\BIN\C51.EXE timer.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------
+   2            名称：定时器库函数
+   3            编写：夏杰
+   4            日期：2017.4.10
+   5            内容：定时器初始化、中断函数
+   6          ------------------------------------------------*/
+   7          #include "sc.h"
+   8          
+   9          // 定时器计数器，累计定时中断次数
+  10          static uint timer_count = 0;
+  11          
+  12          /*-----------------------------------------------
+  13            TODO：定时器初始化
+  14            参数：
+  15            编写：夏杰
+  16            日期：2017.4.10
+  17          ------------------------------------------------*/
+  18          void init_timer0()
+  19          {
+  20   1              // 定时器初始化
+  21   1              TMOD = 0x01;
+  22   1              TH0 = (65535 - timer_time) / 256;       //定时500us,,即0.5ms
+  23   1              TL0 = (65535 - timer_time) % 256;
+  24   1      
+  25   1              // 使能内部中断
+  26   1              ET0 = 1;
+  27   1              EA = 1;
+  28   1      
+  29   1              // 启动定时器(start timer0)
+  30   1              TR0 = 1;        
+  31   1      }
+  32          
+  33          /*-----------------------------------------------
+  34            TODO：定时器0中断函数
+  35            参数：
+  36            编写：夏杰
+  37            日期：2017.4.10
+  38          ------------------------------------------------*/
+  39          void timer0() interrupt 1 using 1
+  40          {       
+  41   1              // pause timer0
+  42   1              TR0 = 0;
+  43   1      
+  44   1              // 定时器重置
+  45   1              TH0 = (65535 - timer_time) / 256;       //定时500us,,即0.5ms
+  46   1              TL0 = (65535 - timer_time) % 256;
+  47   1      
+  48   1              // 高电平控制,,即打舵时间,,打舵角度大小
+  49   1              timer_count++;  
+  50   1              
+  51   1              // 周期设定
+  52   1              if(timer_count == 200)
+  53   1              {
+  54   2                      timer_count = 0;
+  55   2              }
+C51 COMPILER V9.00   TIMER                                                                 04/08/2017 21:36:42 PAGE 2   
+
+  56   1              
+  57   1              // 高电平占空
+  58   1              if(timer_count <= 15)   //PWM控制舵机位置
+  59   1                      steer_out = 1;
+  60   1              else
+  61   1                      steer_out = 0;
+  62   1      
+  63   1              // start timer0
+  64   1              TR0 = 1;
+  65   1      }
+  66          
+  67          
+  68          
+  69          
+  70          
+  71          
+  72          
+  73          
+  74          
+  75          
+  76          
+  77          
+  78          
+  79          
+  80          
+  81          
+  82          
+  83          
+  84          
+  85          
+  86          
+  87          
+  88          
+  89          
+  90          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     70    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -361,6 +361,21 @@
               <FileType>1</FileType>
               <FilePath>.\delay.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>steer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\steer.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\motor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -380,6 +395,21 @@
               <FileName>delay.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>steer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\steer.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\motor.h</FilePath>
             </File>
           </Files>
         </Group>

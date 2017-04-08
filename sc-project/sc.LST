@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SC                                                                    03/29/2017 21:10:30 PAGE 1   
+C51 COMPILER V9.00   SC                                                                    04/08/2017 21:36:42 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SC
@@ -7,34 +7,51 @@ COMPILER INVOKED BY: D:\SoftwareInstall\dev\keil\C51\BIN\C51.EXE sc.c BROWSE DEB
 
 line level    source
 
-   1          #include "sc.h"
-   2          
-   3          
-   4          
-   5          
-   6          
-   7          void main()
-   8          {
-   9   1              // 系统初始化
-  10   1      
-  11   1              init_blueteeth();
-  12   1              
-  13   1              // 初始化延迟
-  14   1              DelayMs(500);   
-  15   1      
-  16   1      
-  17   1      
-  18   1      
-  19   1      
-  20   1      
-  21   1      
-  22   1      
+   1          /*-----------------------------------------------
+   2            名称：程序主控文件
+   3            编写：夏杰
+   4            日期：2017.4.1
+   5            内容：程序入口，及主要控制部分
+   6          ------------------------------------------------*/
+   7          #include "sc.h"
+   8          
+   9          
+  10          
+  11          
+  12          /*-----------------------------------------------
+  13            TODO：主函数
+  14            参数：
+  15            编写：夏杰
+  16            日期：2017.4.1
+  17          ------------------------------------------------*/
+  18          void main()
+  19          {
+  20   1              
+  21   1              //
+  22   1              init_timer0();
   23   1      
-  24   1      }
+  24   1              // 系统初始化
+  25   1              init_blueteeth();
+  26   1              
+  27   1              // 初始化延迟
+  28   1              DelayMs(500);
+  29   1      
+  30   1              while(1);
+  31   1      
+  32   1      }
+  33          
+  34          
+  35          
+  36          
+  37          
+  38          
+  39          
+  40          
+  41          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      8    ----
+   CODE SIZE        =     13    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   BLUETEETH                                                             03/29/2017 21:10:29 PAGE 1   
+C51 COMPILER V9.00   BLUETEETH                                                             04/08/2017 21:36:42 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BLUETEETH
@@ -7,15 +7,26 @@ COMPILER INVOKED BY: D:\SoftwareInstall\dev\keil\C51\BIN\C51.EXE blueteeth.c BRO
 
 line level    source
 
-   1          #include "sc.h"
-   2          
-   3          
-   4          
-   5          
-   6          void init_blueteeth()
-   7          {
-   8   1              ;
-   9   1      }
+   1          /*-----------------------------------------------
+   2            名称：蓝牙调用函数库
+   3            编写：夏杰
+   4            日期：2017.4.15
+   5            内容：通过变量自减，以实现延时
+   6          ------------------------------------------------*/
+   7          #include "sc.h"
+   8          
+   9          
+  10          
+  11          /*-----------------------------------------------
+  12            TODO：蓝牙模块初始化
+  13            参数：
+  14            编写：夏杰
+  15            日期：2017.4.15
+  16          ------------------------------------------------*/
+  17          void init_blueteeth()
+  18          {
+  19   1              ;
+  20   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

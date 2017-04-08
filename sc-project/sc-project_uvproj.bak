@@ -46,7 +46,7 @@
           <OutputName>sc-project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\</ListingPath>
@@ -213,7 +213,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Size>0x10000</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -347,14 +347,19 @@
           <GroupName>source</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
               <FileName>blueteeth.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\blueteeth.c</FilePath>
+            </File>
+            <File>
+              <FileName>sc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sc.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\delay.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -370,6 +375,11 @@
               <FileName>sc.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\sc.h</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\delay.h</FilePath>
             </File>
           </Files>
         </Group>

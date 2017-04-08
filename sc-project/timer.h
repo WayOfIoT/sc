@@ -1,15 +1,25 @@
-#ifndef _BLUETEETH_H_
-#define _BLUETEETH_H_
+#ifndef _TIMER_H_
+#define _TIMER_H_
+
 
 /*-----------------------------------------------
-  TODO：蓝牙模块初始化
+  TODO：定时器初始化
   参数：
   编写：夏杰
-  日期：2017.4.
+  日期：2017.4.10
 ------------------------------------------------*/
-void init_blueteeth();
+void init_timer0();
+
+
+
+
 
 
 
 
 #endif
+
+
+
+
+
