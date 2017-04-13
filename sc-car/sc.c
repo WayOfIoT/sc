@@ -18,6 +18,8 @@
 void main()
 {
 
+	// 系统初始化
+	sc_init();
 
 	while(1)
 	{

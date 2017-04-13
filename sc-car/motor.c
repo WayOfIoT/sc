@@ -9,8 +9,9 @@
 
 // 电机驱动PWM占空比
 uint motor_left_duty = 0, motor_right_duty = 0;
+
 // 电机PWM波计数器
-uint motor_pwm_counter = 0;
+uint motor_pwm_counter = 0, motor_pwm_t = 100;
 
 /*-----------------------------------------------
   TODO：电机驱动初始化
@@ -31,8 +32,14 @@ void motor_init()
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_contorl(MOTOR_DIR motor_left_dir, uint motor_left_duty, MOTOR_DIR motor_right_dir, uint motor_right_duty)
+void motor_control(MOTOR_DIR motor_left_dir, uint motor_left_duty, MOTOR_DIR motor_right_dir, uint motor_right_duty)
 {
+	// 电机PWM波周期
+	if(motor_pwm_counter >= motor_pwm_t)
+	{
+		motor_pwm_counter = 0;
+	}
+	
 	// 左电机驱动
 	switch(motor_left_dir)	
 	{

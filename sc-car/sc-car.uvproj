@@ -376,6 +376,11 @@
               <FileType>1</FileType>
               <FilePath>.\timer.c</FilePath>
             </File>
+            <File>
+              <FileName>sc_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sc_init.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -410,6 +415,11 @@
               <FileName>timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>sc_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sc_init.h</FilePath>
             </File>
           </Files>
         </Group>

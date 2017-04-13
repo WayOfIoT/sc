@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 04/13/2017 23:13:40 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 04/14/2017 00:32:41 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -15,71 +15,71 @@ line level    source
    6          ------------------------------------------------*/
    7          #include "sc.h"
    8          
-   9          // 定时器定时周期:100us 
-  10          // (12M:timer_time = 100; 11.0582M:timer_time = 92;)
-  11          #define timer_time 92
-  12          
-  13          // 定时器计数器，累计定时中断次数
-  14          static uint timer_count = 0;
-  15          
-  16          /*-----------------------------------------------
-  17            TODO：定时器初始化
-  18            参数：
-  19            编写：夏杰
-  20            日期：2017.4.10
-  21          ------------------------------------------------*/
-  22          void init_timer0()
-  23          {
-  24   1              // 定时器初始化
-  25   1              TMOD = 0x01;
-  26   1              TH0 = (65535 - timer_time) / 256;       //定时500us,,即0.5ms
-  27   1              TL0 = (65535 - timer_time) % 256;
-  28   1      
-  29   1              // 使能总中断
-  30   1              EA = 1;
-  31   1      
-  32   1              // 使能内部中断0
-  33   1              ET0 = 1;
-  34   1              
-  35   1              // 启动定时器0(start timer0)
-  36   1              TR0 = 1;        
-  37   1      }
-  38          
-  39          /*-----------------------------------------------
-  40            TODO：定时器0中断函数
-  41            参数：
-  42            编写：夏杰
-  43            日期：2017.4.10
-  44          ------------------------------------------------*/
-  45          void timer0() interrupt 1 using 1
-  46          {       
-  47   1              // pause timer0
-  48   1              TR0 = 0;
-  49   1      
-  50   1              // 定时器重置
-  51   1              TH0 = (65535 - timer_time) / 256;       //定时100us,,即0.1ms
-  52   1              TL0 = (65535 - timer_time) % 256;
-  53   1      
-  54   1              // 高电平控制,,即打舵时间,,打舵角度大小
-  55   1              timer_count++;  
-C51 COMPILER V9.00   TIMER                                                                 04/13/2017 23:13:40 PAGE 2   
+   9          /*-----------------------------------------------
+  10            TODO：定时器初始化
+  11            参数：
+  12            编写：夏杰
+  13            日期：2017.4.10
+  14          ------------------------------------------------*/
+  15          void timer_init()
+  16          {
+  17   1              // 定时器初始化
+  18   1              TMOD = 0x01;
+  19   1              TH0 = (65535 - timer0_t) / 256; //定时500us,,即0.5ms
+  20   1              TL0 = (65535 - timer0_t) % 256;
+  21   1      
+  22   1              // 使能总中断
+  23   1              EA = 1;
+  24   1      
+  25   1              // 使能内部中断0
+  26   1              ET0 = 1;
+  27   1              
+  28   1              // 启动定时器0(start timer0)
+  29   1              TR0 = 1;        
+  30   1      }
+  31          
+  32          /*-----------------------------------------------
+  33            TODO：定时器0中断函数
+  34            参数：
+  35            编写：夏杰
+  36            日期：2017.4.10
+  37          ------------------------------------------------*/
+  38          void timer0() interrupt 1 using 1
+  39          {       
+  40   1              // pause timer0
+  41   1              TR0 = 0;
+  42   1      
+  43   1              // 定时器重置
+  44   1              TH0 = (65535 - timer0_t) / 256; //定时100us,,即0.1ms
+  45   1              TL0 = (65535 - timer0_t) % 256;
+  46   1      
+  47   1              // 电机PWM波计数器
+  48   1              motor_pwm_counter++;
+  49   1              // 电机控制
+  50   1              motor_control(motor_left_dir_forward, 100, motor_right_dir_forward, 100);
+  51   1      
+  52   1              // 舵机计数器累加
+  53   1              steer_pwm_counter++;
+  54   1              steer_control(steer_dir_middle);        
+  55   1      
+C51 COMPILER V9.00   TIMER                                                                 04/14/2017 00:32:41 PAGE 2   
 
-  56   1              
-  57   1              // PWM周期设定
-  58   1              if(timer_count >= 200)
-  59   1              {
-  60   2                      timer_count = 0;
-  61   2              }
-  62   1              
-  63   1              // 高电平占空
-  64   1              if(timer_count <= steer_duty)   //PWM周期
-  65   1                      steer_out = 1;
-  66   1              else
-  67   1                      steer_out = 0;
-  68   1      
-  69   1              // start timer0
-  70   1              TR0 = 1;
-  71   1      }
+  56   1              // start timer0
+  57   1              TR0 = 1;
+  58   1      }
+  59          
+  60          
+  61          
+  62          
+  63          
+  64          
+  65          
+  66          
+  67          
+  68          
+  69          
+  70          
+  71          
   72          
   73          
   74          
@@ -92,27 +92,14 @@ line level    source
   81          
   82          
   83          
-  84          
-  85          
-  86          
-  87          
-  88          
-  89          
-  90          
-  91          
-  92          
-  93          
-  94          
-  95          
-  96          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     75    ----
+   CODE SIZE        =     88    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      2    ----
+   DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

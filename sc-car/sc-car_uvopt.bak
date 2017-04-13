@@ -200,10 +200,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>110</ColumnNumber>
+      <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>45</TopLine>
-      <CurrentLine>55</CurrentLine>
+      <TopLine>19</TopLine>
+      <CurrentLine>41</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
@@ -1736,15 +1736,15 @@
         </Doc>
         <Doc>
           <Name>.\motor.c</Name>
-          <ColumnNumber>110</ColumnNumber>
-          <TopLine>45</TopLine>
-          <CurrentLine>55</CurrentLine>
+          <ColumnNumber>2</ColumnNumber>
+          <TopLine>19</TopLine>
+          <CurrentLine>41</CurrentLine>
         </Doc>
         <Doc>
           <Name>MOTOR.H</Name>
-          <ColumnNumber>54</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>11</CurrentLine>
+          <ColumnNumber>23</ColumnNumber>
+          <TopLine>7</TopLine>
+          <CurrentLine>24</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

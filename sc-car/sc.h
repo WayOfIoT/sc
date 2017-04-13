@@ -24,6 +24,7 @@
 #include "timer.h"
 #include "steer.h"
 #include "motor.h"
+#include "sc_init.h"
 
 /*    数据类型定义    */
 typedef unsigned int uint;

@@ -1,0 +1,50 @@
+C51 COMPILER V9.00   SC_INIT                                                               04/14/2017 00:32:41 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE SC_INIT
+OBJECT MODULE PLACED IN sc_init.OBJ
+COMPILER INVOKED BY: D:\SoftwareInstall\dev\keil\C51\BIN\C51.EXE sc_init.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------
+   2            名称：系统初始化函数库
+   3            编写：夏杰
+   4            日期：2017.4.
+   5            内容：按时序调用各个模块的初始化程序
+   6          ------------------------------------------------*/
+   7          
+   8          #include "sc.h"
+   9          
+  10          /*-----------------------------------------------
+  11            TODO：初始化sc系统
+  12            参数：null
+  13            编写：夏杰
+  14            日期：2017.4.
+  15          ------------------------------------------------*/
+  16          void sc_init()
+  17          {
+  18   1              // 舵机初始化
+  19   1              steer_init();
+  20   1              // 
+  21   1              motor_init();
+  22   1              //
+  23   1              blueteeth_init();
+  24   1              //
+  25   1              timer_init();
+  26   1      
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     12    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

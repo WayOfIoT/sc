@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MOTOR                                                                 04/13/2017 23:13:40 PAGE 1   
+C51 COMPILER V9.00   MOTOR                                                                 04/14/2017 00:32:41 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MOTOR
@@ -18,208 +18,216 @@ line level    source
    9          
   10          // 电机驱动PWM占空比
   11          uint motor_left_duty = 0, motor_right_duty = 0;
-  12          // 电机PWM波计数器
-  13          uint motor_pwm_counter = 0;
-  14          
-  15          /*-----------------------------------------------
-  16            TODO：电机驱动初始化
-  17            参数：null
-  18            编写：夏杰
-  19            日期：2017.4.13
-  20          ------------------------------------------------*/
-  21          void motor_init()
-  22          {
-  23   1              // 初始化电机停止
-  24   1              motor_left_stop();
-  25   1              motor_right_stop();
-  26   1      }
-  27          
-  28          /*-----------------------------------------------
-  29            TODO：电机驱动正反转、占空比控制
-  30            参数：
-  31            编写：夏杰
-  32            日期：2017.4.13
-  33          ------------------------------------------------*/
-  34          void motor_contorl(MOTOR_DIR motor_left_dir, uint motor_left_duty, MOTOR_DIR motor_right_dir, uint motor_r
+  12          
+  13          // 电机PWM波计数器
+  14          uint motor_pwm_counter = 0, motor_pwm_t = 100;
+  15          
+  16          /*-----------------------------------------------
+  17            TODO：电机驱动初始化
+  18            参数：null
+  19            编写：夏杰
+  20            日期：2017.4.13
+  21          ------------------------------------------------*/
+  22          void motor_init()
+  23          {
+  24   1              // 初始化电机停止
+  25   1              motor_left_stop();
+  26   1              motor_right_stop();
+  27   1      }
+  28          
+  29          /*-----------------------------------------------
+  30            TODO：电机驱动正反转、占空比控制
+  31            参数：
+  32            编写：夏杰
+  33            日期：2017.4.13
+  34          ------------------------------------------------*/
+  35          void motor_control(MOTOR_DIR motor_left_dir, uint motor_left_duty, MOTOR_DIR motor_right_dir, uint motor_r
              -ight_duty)
-  35          {
-  36   1              // 左电机驱动
-  37   1              switch(motor_left_dir)  
-  38   1              {
-  39   2                      case motor_left_dir_forward:
-  40   2                              motor_left_forward(motor_left_duty);
-  41   2                              break;
-  42   2                      case motor_left_dir_back:
-  43   2                              motor_left_back(motor_left_duty);
-  44   2                              break;
-  45   2                      case motor_left_dir_stop:
-  46   2                              motor_left_stop();
-  47   2                              break;
-  48   2              }
-  49   1      
-  50   1              // 右电机驱动
-  51   1              switch(motor_right_dir)
-  52   1              {
-  53   2                      case motor_right_dir_forward:
-  54   2                              motor_right_forward(motor_right_duty);
-C51 COMPILER V9.00   MOTOR                                                                 04/13/2017 23:13:40 PAGE 2   
+  36          {
+  37   1              // 电机PWM波周期
+  38   1              if(motor_pwm_counter >= motor_pwm_t)
+  39   1              {
+  40   2                      motor_pwm_counter = 0;
+  41   2              }
+  42   1              
+  43   1              // 左电机驱动
+  44   1              switch(motor_left_dir)  
+  45   1              {
+  46   2                      case motor_left_dir_forward:
+  47   2                              motor_left_forward(motor_left_duty);
+  48   2                              break;
+  49   2                      case motor_left_dir_back:
+  50   2                              motor_left_back(motor_left_duty);
+  51   2                              break;
+  52   2                      case motor_left_dir_stop:
+  53   2                              motor_left_stop();
+  54   2                              break;
+C51 COMPILER V9.00   MOTOR                                                                 04/14/2017 00:32:41 PAGE 2   
 
-  55   2                              break;
-  56   2                      case motor_right_dir_back:
-  57   2                              motor_right_back(motor_right_duty);
-  58   2                              break;
-  59   2                      case motor_right_dir_stop:
-  60   2                              motor_right_stop();
-  61   2                              break;
-  62   2              }
-  63   1      }
-  64          
-  65          /*-----------------------------------------------
-  66            TODO：左电机正转
-  67            参数：@motor_duty 电机PWM占空比
-  68            编写：夏杰
-  69            日期：2017.4.13
-  70          ------------------------------------------------*/
-  71          void motor_left_forward(uchar motor_duty)
-  72          {
-  73   1              // 电平驱动左电机正转
-  74   1              motor_left_in = MOTOR_ON;
-  75   1              motor_left_out = MOTOR_OFF;
-  76   1              
-  77   1              // PWM波驱动
-  78   1              motor_left_duty = motor_duty;
-  79   1              if(motor_pwm_counter <= motor_left_duty)
-  80   1              {
-  81   2                      motor_left_in = MOTOR_ON;
-  82   2              }
-  83   1              else
-  84   1              {
-  85   2                      motor_left_in = MOTOR_OFF;
-  86   2              }
-  87   1              motor_left_out = MOTOR_OFF;
-  88   1      }
-  89          
-  90          /*-----------------------------------------------
-  91            TODO：左电机反转
-  92            参数：@motor_duty 电机PWM占空比
-  93            编写：夏杰
-  94            日期：2017.4.13
-  95          ------------------------------------------------*/
-  96          void motor_left_back(uchar motor_duty)
-  97          {
-  98   1              motor_left_in = MOTOR_OFF;
-  99   1              motor_left_out = MOTOR_ON;
- 100   1      
- 101   1              // PWM波驱动
- 102   1              motor_left_duty = motor_duty;
- 103   1              if(motor_pwm_counter <= motor_left_duty)
- 104   1              {
- 105   2                      motor_left_out = MOTOR_ON;
- 106   2              }
- 107   1              else
- 108   1              {
- 109   2                      motor_left_out = MOTOR_OFF;
- 110   2              }
- 111   1              motor_left_in = MOTOR_OFF;
- 112   1      }
- 113          
- 114          /*-----------------------------------------------
- 115            TODO：左电机停止
- 116            参数：null
-C51 COMPILER V9.00   MOTOR                                                                 04/13/2017 23:13:40 PAGE 3   
+  55   2              }
+  56   1      
+  57   1              // 右电机驱动
+  58   1              switch(motor_right_dir)
+  59   1              {
+  60   2                      // 右电机正转
+  61   2                      case motor_right_dir_forward:
+  62   2                              motor_right_forward(motor_right_duty);
+  63   2                              break;
+  64   2                      case motor_right_dir_back:
+  65   2                              motor_right_back(motor_right_duty);
+  66   2                              break;
+  67   2                      case motor_right_dir_stop:
+  68   2                              motor_right_stop();
+  69   2                              break;
+  70   2              }
+  71   1      }
+  72          
+  73          /*-----------------------------------------------
+  74            TODO：左电机正转
+  75            参数：@motor_duty 电机PWM占空比
+  76            编写：夏杰
+  77            日期：2017.4.13
+  78          ------------------------------------------------*/
+  79          void motor_left_forward(uchar motor_duty)
+  80          {
+  81   1              // 电平驱动左电机正转
+  82   1              motor_left_in = MOTOR_ON;
+  83   1              motor_left_out = MOTOR_OFF;
+  84   1              
+  85   1              // PWM波驱动
+  86   1              motor_left_duty = motor_duty;
+  87   1              if(motor_pwm_counter <= motor_left_duty)
+  88   1              {
+  89   2                      motor_left_in = MOTOR_ON;
+  90   2              }
+  91   1              else
+  92   1              {
+  93   2                      motor_left_in = MOTOR_OFF;
+  94   2              }
+  95   1              motor_left_out = MOTOR_OFF;
+  96   1      }
+  97          
+  98          /*-----------------------------------------------
+  99            TODO：左电机反转
+ 100            参数：@motor_duty 电机PWM占空比
+ 101            编写：夏杰
+ 102            日期：2017.4.13
+ 103          ------------------------------------------------*/
+ 104          void motor_left_back(uchar motor_duty)
+ 105          {
+ 106   1              motor_left_in = MOTOR_OFF;
+ 107   1              motor_left_out = MOTOR_ON;
+ 108   1      
+ 109   1              // PWM波驱动
+ 110   1              motor_left_duty = motor_duty;
+ 111   1              if(motor_pwm_counter <= motor_left_duty)
+ 112   1              {
+ 113   2                      motor_left_out = MOTOR_ON;
+ 114   2              }
+ 115   1              else
+ 116   1              {
+C51 COMPILER V9.00   MOTOR                                                                 04/14/2017 00:32:41 PAGE 3   
 
- 117            编写：夏杰
- 118            日期：2017.4.13
- 119          ------------------------------------------------*/
- 120          void motor_left_stop()
- 121          {
- 122   1              // 电平驱动
- 123   1              motor_left_in = MOTOR_OFF;
- 124   1              motor_left_out = MOTOR_OFF;
- 125   1      
- 126   1              // PWM波占空比驱动
- 127   1              motor_left_duty = 0;
- 128   1              motor_right_duty = 0;
- 129   1      }
- 130          
- 131          /*-----------------------------------------------
- 132            TODO：右电机正转
- 133            参数：@motor_duty 电机PWM占空比
- 134            编写：夏杰
- 135            日期：2017.4.13
- 136          ------------------------------------------------*/
- 137          void motor_right_forward(uchar motor_duty)
- 138          {       
- 139   1              motor_right_in = MOTOR_ON;
- 140   1              motor_right_out = MOTOR_OFF;
- 141   1      
- 142   1              // PWM波驱动
- 143   1              motor_right_duty = motor_duty;
- 144   1              if(motor_pwm_counter <= motor_right_duty)
- 145   1              {
- 146   2                      motor_right_in = MOTOR_ON;
- 147   2              }
- 148   1              else
- 149   1              {
- 150   2                      motor_right_in = MOTOR_OFF;
- 151   2              }
- 152   1              motor_right_out = MOTOR_OFF;
- 153   1      }
- 154          
- 155          /*-----------------------------------------------
- 156            TODO：右电机反转
- 157            参数：@motor_duty 电机PWM占空比
- 158            编写：夏杰
- 159            日期：2017.4.13
- 160          ------------------------------------------------*/
- 161          void motor_right_back(uchar motor_duty)
- 162          {
- 163   1              motor_right_in = MOTOR_OFF;
- 164   1              motor_right_out = MOTOR_ON;
- 165   1      
- 166   1              // PWM波驱动
- 167   1              motor_right_duty = motor_duty;
- 168   1              if(motor_pwm_counter <= motor_right_duty)
- 169   1              {
- 170   2                      motor_right_out = MOTOR_ON;
- 171   2              }
- 172   1              else
- 173   1              {
- 174   2                      motor_right_out = MOTOR_OFF;
- 175   2              }
- 176   1              motor_right_in = MOTOR_OFF;
- 177   1      }
- 178          
-C51 COMPILER V9.00   MOTOR                                                                 04/13/2017 23:13:40 PAGE 4   
+ 117   2                      motor_left_out = MOTOR_OFF;
+ 118   2              }
+ 119   1              motor_left_in = MOTOR_OFF;
+ 120   1      }
+ 121          
+ 122          /*-----------------------------------------------
+ 123            TODO：左电机停止
+ 124            参数：null
+ 125            编写：夏杰
+ 126            日期：2017.4.13
+ 127          ------------------------------------------------*/
+ 128          void motor_left_stop()
+ 129          {
+ 130   1              // 电平驱动
+ 131   1              motor_left_in = MOTOR_OFF;
+ 132   1              motor_left_out = MOTOR_OFF;
+ 133   1      
+ 134   1              // PWM波占空比驱动
+ 135   1              motor_left_duty = 0;
+ 136   1              motor_right_duty = 0;
+ 137   1      }
+ 138          
+ 139          /*-----------------------------------------------
+ 140            TODO：右电机正转
+ 141            参数：@motor_duty 电机PWM占空比
+ 142            编写：夏杰
+ 143            日期：2017.4.13
+ 144          ------------------------------------------------*/
+ 145          void motor_right_forward(uchar motor_duty)
+ 146          {       
+ 147   1              motor_right_in = MOTOR_ON;
+ 148   1              motor_right_out = MOTOR_OFF;
+ 149   1      
+ 150   1              // PWM波驱动
+ 151   1              motor_right_duty = motor_duty;
+ 152   1              if(motor_pwm_counter <= motor_right_duty)
+ 153   1              {
+ 154   2                      motor_right_in = MOTOR_ON;
+ 155   2              }
+ 156   1              else
+ 157   1              {
+ 158   2                      motor_right_in = MOTOR_OFF;
+ 159   2              }
+ 160   1              motor_right_out = MOTOR_OFF;
+ 161   1      }
+ 162          
+ 163          /*-----------------------------------------------
+ 164            TODO：右电机反转
+ 165            参数：@motor_duty 电机PWM占空比
+ 166            编写：夏杰
+ 167            日期：2017.4.13
+ 168          ------------------------------------------------*/
+ 169          void motor_right_back(uchar motor_duty)
+ 170          {
+ 171   1              motor_right_in = MOTOR_OFF;
+ 172   1              motor_right_out = MOTOR_ON;
+ 173   1      
+ 174   1              // PWM波驱动
+ 175   1              motor_right_duty = motor_duty;
+ 176   1              if(motor_pwm_counter <= motor_right_duty)
+ 177   1              {
+ 178   2                      motor_right_out = MOTOR_ON;
+C51 COMPILER V9.00   MOTOR                                                                 04/14/2017 00:32:41 PAGE 4   
 
- 179          /*-----------------------------------------------
- 180            TODO：右电机停止
- 181            参数：null
- 182            编写：夏杰
- 183            日期：2017.4.13
- 184          ------------------------------------------------*/
- 185          void motor_right_stop()
- 186          {
- 187   1              motor_right_in = MOTOR_OFF;
- 188   1              motor_right_out = MOTOR_OFF;
- 189   1      
- 190   1              // PWM波占空比驱动
- 191   1              motor_left_duty = 0;
- 192   1              motor_right_duty = 0;
- 193   1      }
- 194          
- 195          
- 196          
- 197          
- 198          
+ 179   2              }
+ 180   1              else
+ 181   1              {
+ 182   2                      motor_right_out = MOTOR_OFF;
+ 183   2              }
+ 184   1              motor_right_in = MOTOR_OFF;
+ 185   1      }
+ 186          
+ 187          /*-----------------------------------------------
+ 188            TODO：右电机停止
+ 189            参数：null
+ 190            编写：夏杰
+ 191            日期：2017.4.13
+ 192          ------------------------------------------------*/
+ 193          void motor_right_stop()
+ 194          {
+ 195   1              motor_right_in = MOTOR_OFF;
+ 196   1              motor_right_out = MOTOR_OFF;
+ 197   1      
+ 198   1              // PWM波占空比驱动
+ 199   1              motor_left_duty = 0;
+ 200   1              motor_right_duty = 0;
+ 201   1      }
+ 202          
+ 203          
+ 204          
+ 205          
+ 206          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    211    ----
+   CODE SIZE        =    227    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      6       6
+   DATA SIZE        =      8       6
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

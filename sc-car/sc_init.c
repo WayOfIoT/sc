@@ -15,6 +15,13 @@
 ------------------------------------------------*/
 void sc_init()
 {
-	;
+	// ¶æ»ú³õÊ¼»¯
+	steer_init();
+	// 
+	motor_init();
+	//
+	blueteeth_init();
+	//
+	timer_init();
 
 }

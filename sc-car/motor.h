@@ -15,7 +15,7 @@ sbit motor_right_out = P1^5;
 extern unsigned int motor_left_duty, motor_right_duty;
 
 // 电机PWM波计数器
-extern unsigned int motor_pwm_count;
+extern unsigned int motor_pwm_counter;
 
 // 电机正反转参数设置
 typedef enum MOTOR_DIR
@@ -43,6 +43,14 @@ typedef enum MOTOR_DIR
   日期：2017.4.13
 ------------------------------------------------*/
 void motor_init();
+
+/*-----------------------------------------------
+  TODO：电机驱动正反转、占空比控制
+  参数：
+  编写：夏杰
+  日期：2017.4.13
+------------------------------------------------*/
+void motor_control(MOTOR_DIR motor_left_dir, unsigned int motor_left_duty, MOTOR_DIR motor_right_dir, unsigned int motor_right_duty);
 
 /*-----------------------------------------------
   TODO：左电机正转

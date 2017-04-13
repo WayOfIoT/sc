@@ -6,13 +6,6 @@
 ------------------------------------------------*/
 #include "sc.h"
 
-// 定时器定时周期:100us 
-// (12M:timer_time = 100; 11.0582M:timer_time = 92;)
-#define timer_time 92
-
-// 定时器计数器，累计定时中断次数
-static uint timer_count = 0;
-
 /*-----------------------------------------------
   TODO：定时器初始化
   参数：
@@ -23,8 +16,8 @@ void timer_init()
 {
 	// 定时器初始化
 	TMOD = 0x01;
-	TH0 = (65535 - timer_time) / 256;	//定时500us,,即0.5ms
-	TL0 = (65535 - timer_time) % 256;
+	TH0 = (65535 - timer0_t) / 256;	//定时500us,,即0.5ms
+	TL0 = (65535 - timer0_t) % 256;
 
 	// 使能总中断
 	EA = 1;
@@ -48,23 +41,17 @@ void timer0() interrupt 1 using 1
 	TR0 = 0;
 
 	// 定时器重置
-	TH0 = (65535 - timer_time) / 256;	//定时100us,,即0.1ms
-	TL0 = (65535 - timer_time) % 256;
+	TH0 = (65535 - timer0_t) / 256;	//定时100us,,即0.1ms
+	TL0 = (65535 - timer0_t) % 256;
 
-	// 高电平控制,,即打舵时间,,打舵角度大小
-	timer_count++;	
-	
-	// PWM周期设定
-	if(timer_count >= 200)
-	{
-		timer_count = 0;
-	}
-	
-	// 高电平占空
-	if(timer_count <= steer_duty)	//PWM周期
-		steer_out = 1;
-	else
-		steer_out = 0;
+	// 电机PWM波计数器
+	motor_pwm_counter++;
+	// 电机控制
+	motor_control(motor_left_dir_forward, 100, motor_right_dir_forward, 100);
+
+	// 舵机计数器累加
+	steer_pwm_counter++;
+	steer_control(steer_dir_middle);	
 
 	// start timer0
 	TR0 = 1;

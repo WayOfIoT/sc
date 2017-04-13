@@ -33,6 +33,8 @@ void DelayMs(unsigned int t)
 	unsigned int i = 0, j = 0;
     for(i = t;i > 0;i--)
         for(j = 110;j > 0;j--);
+	// ╣ВуШясЁы
+	DelayUs2x(0);
 }
 
 
