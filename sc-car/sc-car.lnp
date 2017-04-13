@@ -1,0 +1,8 @@
+"blueteeth.obj",
+"delay.obj",
+"motor.obj",
+"sc.obj",
+"steer.obj",
+"timer.obj" 
+TO "sc-car" 
+RAMSIZE(256) 

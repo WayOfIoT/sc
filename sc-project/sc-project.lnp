@@ -1,8 +1,0 @@
-"blueteeth.obj",
-"sc.obj",
-"delay.obj",
-"timer.obj",
-"steer.obj",
-"motor.obj" 
-TO "sc-project" 
-RAMSIZE(256) 
