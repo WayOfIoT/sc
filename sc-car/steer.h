@@ -5,14 +5,14 @@
 sbit steer_out = P1^0;
 
 // 舵机PWM波周期、计数器
-extern unsigned int steer_pwm_t, steer_pwm_counter;
+extern unsigned char steer_pwm_t, steer_pwm_counter;
 
 // 舵机PWM占空比,范围:5/200~25/200;小车可用范围 12/200~18/200 
 extern unsigned char steer_left_duty, steer_right_duty, steer_middle_duty, steer_duty;
 
 
 // 舵机转向协议
-typedef enum STEER_DIR
+typedef enum _STEER_DIR_
 {
 	// 舵机左转向
 	steer_dir_left,
@@ -20,7 +20,7 @@ typedef enum STEER_DIR
 	steer_dir_middle,
 	// 舵机右转向
 	steer_dir_right
-}STEER_DIR;
+} STEER_DIR;
 
 /*-----------------------------------------------
   TODO：舵机初始化

@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 04/14/2017 00:32:41 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -23,79 +23,114 @@ line level    source
   14          ------------------------------------------------*/
   15          void timer_init()
   16          {
-  17   1              // 定时器初始化
-  18   1              TMOD = 0x01;
-  19   1              TH0 = (65535 - timer0_t) / 256; //定时500us,,即0.5ms
-  20   1              TL0 = (65535 - timer0_t) % 256;
-  21   1      
-  22   1              // 使能总中断
-  23   1              EA = 1;
-  24   1      
-  25   1              // 使能内部中断0
-  26   1              ET0 = 1;
-  27   1              
-  28   1              // 启动定时器0(start timer0)
-  29   1              TR0 = 1;        
-  30   1      }
-  31          
-  32          /*-----------------------------------------------
-  33            TODO：定时器0中断函数
-  34            参数：
-  35            编写：夏杰
-  36            日期：2017.4.10
-  37          ------------------------------------------------*/
-  38          void timer0() interrupt 1 using 1
-  39          {       
-  40   1              // pause timer0
-  41   1              TR0 = 0;
-  42   1      
-  43   1              // 定时器重置
-  44   1              TH0 = (65535 - timer0_t) / 256; //定时100us,,即0.1ms
-  45   1              TL0 = (65535 - timer0_t) % 256;
-  46   1      
-  47   1              // 电机PWM波计数器
-  48   1              motor_pwm_counter++;
-  49   1              // 电机控制
-  50   1              motor_control(motor_left_dir_forward, 100, motor_right_dir_forward, 100);
-  51   1      
-  52   1              // 舵机计数器累加
-  53   1              steer_pwm_counter++;
-  54   1              steer_control(steer_dir_middle);        
-  55   1      
-C51 COMPILER V9.00   TIMER                                                                 04/14/2017 00:32:41 PAGE 2   
+  17   1              // 定时器0,1初始化
+  18   1              TMOD = 0x11;
+  19   1      
+  20   1              // 定时器0定时初值设定
+  21   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
+  22   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
+  23   1              // 定时器1定时初值设定
+  24   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时200us,,即0.2ms
+  25   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256;
+  26   1      
+  27   1              // 使能总中断
+  28   1              EA = 1;
+  29   1      
+  30   1              // 使能内部中断0,1
+  31   1              ET0 = 1;
+  32   1              ET1 = 1;
+  33   1              
+  34   1              // 启动定时器0,1(start timer0,timer1)
+  35   1              TR0 = 1;
+  36   1              TR1 = 0;        
+  37   1      }
+  38          
+  39          /*-----------------------------------------------
+  40            TODO：定时器0中断函数
+  41            参数：
+  42            编写：夏杰
+  43            日期：2017.4.10
+  44          ------------------------------------------------*/
+  45          void timer0() interrupt 1 using 1
+  46          {       
+  47   1              // pause timer0
+  48   1              TR0 = 0;
+  49   1      
+  50   1              // 定时器重置
+  51   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
+  52   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
+  53   1      
+  54   1              /*---------------- 舵机控制 -----------------*/
+  55   1              // 舵机计数器累加
+C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 2   
 
-  56   1              // start timer0
-  57   1              TR0 = 1;
-  58   1      }
-  59          
-  60          
-  61          
-  62          
-  63          
-  64          
-  65          
-  66          
-  67          
-  68          
-  69          
-  70          
-  71          
+  56   1              steer_pwm_counter++;
+  57   1              // 舵机PWM波周期控制
+  58   1              if(steer_pwm_counter == steer_pwm_t)
+  59   1              {
+  60   2                      steer_pwm_counter = 0;
+  61   2              }
+  62   1              // 高电平占空
+  63   1              if(steer_pwm_counter <= steer_duty)     //PWM周期
+  64   1                      steer_out = 1;
+  65   1              else
+  66   1                      steer_out = 0;  
+  67   1                      
+  68   1      
+  69   1              // start timer0
+  70   1              TR0 = 1;
+  71   1      }
   72          
   73          
   74          
-  75          
-  76          
-  77          
-  78          
-  79          
-  80          
-  81          
-  82          
-  83          
+  75          void timer1() interrupt 3 using 2
+  76          {
+  77   1              // pause timer1
+  78   1      //      TR1 = 0;
+  79   1      
+  80   1              // 定时器1定时值重置
+  81   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时100us,,即0.1ms
+  82   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256; 
+  83   1      
+  84   1              // 电机PWM波计数器
+  85   1              motor_pwm_counter++;
+  86   1              // 电机控制
+  87   1              motor_control(motor_left_dir_back, 10, motor_right_dir_forward, 10);
+  88   1      
+  89   1              // start timer1
+  90   1      //      TR1 = 1;
+  91   1      }
+  92          
+  93          
+  94          
+  95          
+  96          
+  97          
+  98          
+  99          
+ 100          
+ 101          
+ 102          
+ 103          
+ 104          
+ 105          
+ 106          
+ 107          
+ 108          
+ 109          
+ 110          
+ 111          
+ 112          
+ 113          
+ 114          
+ 115          
+ 116          
+
+C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 3   
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     88    ----
+   CODE SIZE        =    123    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

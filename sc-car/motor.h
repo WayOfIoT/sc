@@ -11,14 +11,11 @@ sbit motor_right_out = P1^5;
 #define MOTOR_ON 1
 #define MOTOR_OFF 0
 
-// 电机驱动PWM占空比
-extern unsigned int motor_left_duty, motor_right_duty;
-
 // 电机PWM波计数器
-extern unsigned int motor_pwm_counter;
+extern unsigned int motor_pwm_counter, motor_pwm_t;
 
 // 电机正反转参数设置
-typedef enum MOTOR_DIR
+typedef enum _MOTOR_DIR_
 {
 	// 左电机正转
 	motor_left_dir_forward,
@@ -32,7 +29,7 @@ typedef enum MOTOR_DIR
 	motor_right_dir_back,
 	//  右电机停止
 	motor_right_dir_stop	
-}MOTOR_DIR;
+} MOTOR_DIR;
 
 /*----------- 函数声明 ------------*/
 
@@ -43,6 +40,7 @@ typedef enum MOTOR_DIR
   日期：2017.4.13
 ------------------------------------------------*/
 void motor_init();
+
 
 /*-----------------------------------------------
   TODO：电机驱动正反转、占空比控制
@@ -58,7 +56,7 @@ void motor_control(MOTOR_DIR motor_left_dir, unsigned int motor_left_duty, MOTOR
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_left_forward(unsigned char motor_duty);
+void motor_left_forward(unsigned int motor_left_duty);
 
 /*-----------------------------------------------
   TODO：左电机反转
@@ -66,7 +64,7 @@ void motor_left_forward(unsigned char motor_duty);
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_left_back(unsigned char motor_duty);
+void motor_left_back(unsigned int motor_left_duty);
 
 /*-----------------------------------------------
   TODO：左电机停止
@@ -82,7 +80,7 @@ void motor_left_stop();
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_right_forward(unsigned char motor_duty);
+void motor_right_forward(unsigned int motor_right_duty);
 
 /*-----------------------------------------------
   TODO：右电机反转
@@ -90,7 +88,7 @@ void motor_right_forward(unsigned char motor_duty);
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_right_back(unsigned char motor_duty);
+void motor_right_back(unsigned int motor_right_duty);
 
 /*-----------------------------------------------
   TODO：右电机停止

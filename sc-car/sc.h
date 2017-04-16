@@ -27,8 +27,8 @@
 #include "sc_init.h"
 
 /*    数据类型定义    */
-typedef unsigned int uint;
-typedef unsigned char uchar;
+#define uint unsigned int
+#define uchar unsigned char
 
 
 

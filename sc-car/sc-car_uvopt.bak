@@ -172,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
+      <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>8</CurrentLine>
+      <CurrentLine>12</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\blueteeth.c</PathWithFileName>
       <FilenameWithoutPath>blueteeth.c</FilenameWithoutPath>
@@ -186,10 +186,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>11</TopLine>
+      <CurrentLine>36</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\delay.c</PathWithFileName>
       <FilenameWithoutPath>delay.c</FilenameWithoutPath>
@@ -200,10 +200,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>19</TopLine>
-      <CurrentLine>41</CurrentLine>
+      <TopLine>7</TopLine>
+      <CurrentLine>25</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
@@ -214,10 +214,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>11</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>9</CurrentLine>
+      <TopLine>7</TopLine>
+      <CurrentLine>23</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\sc.c</PathWithFileName>
       <FilenameWithoutPath>sc.c</FilenameWithoutPath>
@@ -228,10 +228,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>21</ColumnNumber>
+      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>4</CurrentLine>
+      <TopLine>61</TopLine>
+      <CurrentLine>61</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\steer.c</PathWithFileName>
       <FilenameWithoutPath>steer.c</FilenameWithoutPath>
@@ -242,13 +242,27 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>21</ColumnNumber>
+      <ColumnNumber>11</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>40</TopLine>
+      <CurrentLine>60</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>7</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>11</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\sc_init.c</PathWithFileName>
+      <FilenameWithoutPath>sc_init.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -259,7 +273,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>7</FileNumber>
+      <FileNumber>8</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -273,7 +287,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>8</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -287,7 +301,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>9</FileNumber>
+      <FileNumber>10</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -301,7 +315,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>11</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -315,7 +329,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>12</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -329,7 +343,7 @@
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>13</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -340,6 +354,20 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.h</PathWithFileName>
       <FilenameWithoutPath>timer.h</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>14</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\sc_init.h</PathWithFileName>
+      <FilenameWithoutPath>sc_init.h</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -1684,67 +1712,79 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>8</ActiveTab>
+      <ActiveTab>11</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\sc.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>9</CurrentLine>
+          <ColumnNumber>11</ColumnNumber>
+          <TopLine>7</TopLine>
+          <CurrentLine>23</CurrentLine>
         </Doc>
         <Doc>
           <Name>SC.H</Name>
-          <ColumnNumber>52</ColumnNumber>
+          <ColumnNumber>14</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>4</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\steer.c</Name>
-          <ColumnNumber>21</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>4</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>STEER.H</Name>
-          <ColumnNumber>16</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>8</CurrentLine>
+          <CurrentLine>31</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\timer.c</Name>
-          <ColumnNumber>21</ColumnNumber>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>28</TopLine>
+          <CurrentLine>38</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>TIMER.H</Name>
+          <ColumnNumber>20</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>13</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\steer.c</Name>
+          <ColumnNumber>26</ColumnNumber>
+          <TopLine>61</TopLine>
+          <CurrentLine>61</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>STEER.H</Name>
+          <ColumnNumber>2</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>23</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\motor.c</Name>
+          <ColumnNumber>15</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
-          <Name>TIMER.H</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>5</CurrentLine>
+          <Name>MOTOR.H</Name>
+          <ColumnNumber>43</ColumnNumber>
+          <TopLine>25</TopLine>
+          <CurrentLine>25</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\blueteeth.c</Name>
-          <ColumnNumber>17</ColumnNumber>
+          <ColumnNumber>22</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>12</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>BLUETEETH.H</Name>
+          <ColumnNumber>60</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>4</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\sc_init.c</Name>
+          <ColumnNumber>15</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>8</CurrentLine>
         </Doc>
         <Doc>
-          <Name>BLUETEETH.H</Name>
+          <Name>SC_INIT.H</Name>
           <ColumnNumber>0</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>1</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\motor.c</Name>
-          <ColumnNumber>2</ColumnNumber>
-          <TopLine>19</TopLine>
-          <CurrentLine>41</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>MOTOR.H</Name>
-          <ColumnNumber>23</ColumnNumber>
-          <TopLine>7</TopLine>
-          <CurrentLine>24</CurrentLine>
+          <CurrentLine>3</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

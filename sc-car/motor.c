@@ -7,9 +7,6 @@
 
 #include "sc.h"
 
-// 电机驱动PWM占空比
-uint motor_left_duty = 0, motor_right_duty = 0;
-
 // 电机PWM波计数器
 uint motor_pwm_counter = 0, motor_pwm_t = 100;
 
@@ -25,6 +22,7 @@ void motor_init()
 	motor_left_stop();
 	motor_right_stop();
 }
+
 
 /*-----------------------------------------------
   TODO：电机驱动正反转、占空比控制
@@ -76,14 +74,13 @@ void motor_control(MOTOR_DIR motor_left_dir, uint motor_left_duty, MOTOR_DIR mot
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_left_forward(uchar motor_duty)
+void motor_left_forward(uint motor_left_duty)
 {
 	// 电平驱动左电机正转
 	motor_left_in = MOTOR_ON;
 	motor_left_out = MOTOR_OFF;
 	
 	// PWM波驱动
-	motor_left_duty = motor_duty;
 	if(motor_pwm_counter <= motor_left_duty)
 	{
 		motor_left_in = MOTOR_ON;
@@ -101,13 +98,13 @@ void motor_left_forward(uchar motor_duty)
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_left_back(uchar motor_duty)
+void motor_left_back(uint motor_left_duty)
 {
+	// 电平驱动
 	motor_left_in = MOTOR_OFF;
 	motor_left_out = MOTOR_ON;
 
 	// PWM波驱动
-	motor_left_duty = motor_duty;
 	if(motor_pwm_counter <= motor_left_duty)
 	{
 		motor_left_out = MOTOR_ON;
@@ -130,10 +127,6 @@ void motor_left_stop()
 	// 电平驱动
 	motor_left_in = MOTOR_OFF;
 	motor_left_out = MOTOR_OFF;
-
-	// PWM波占空比驱动
-	motor_left_duty = 0;
-	motor_right_duty = 0;
 }
 
 /*-----------------------------------------------
@@ -142,13 +135,13 @@ void motor_left_stop()
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_right_forward(uchar motor_duty)
+void motor_right_forward(uint motor_right_duty)
 {	
+	// 电平驱动	
 	motor_right_in = MOTOR_ON;
 	motor_right_out = MOTOR_OFF;
 
 	// PWM波驱动
-	motor_right_duty = motor_duty;
 	if(motor_pwm_counter <= motor_right_duty)
 	{
 		motor_right_in = MOTOR_ON;
@@ -166,13 +159,13 @@ void motor_right_forward(uchar motor_duty)
   编写：夏杰
   日期：2017.4.13
 ------------------------------------------------*/
-void motor_right_back(uchar motor_duty)
+void motor_right_back(uint motor_right_duty)
 {
+	// 电平驱动
 	motor_right_in = MOTOR_OFF;
 	motor_right_out = MOTOR_ON;
 
 	// PWM波驱动
-	motor_right_duty = motor_duty;
 	if(motor_pwm_counter <= motor_right_duty)
 	{
 		motor_right_out = MOTOR_ON;
@@ -192,12 +185,9 @@ void motor_right_back(uchar motor_duty)
 ------------------------------------------------*/
 void motor_right_stop()
 {
+	// 电平驱动
 	motor_right_in = MOTOR_OFF;
 	motor_right_out = MOTOR_OFF;
-
-	// PWM波占空比驱动
-	motor_left_duty = 0;
-	motor_right_duty = 0;
 }
 
 

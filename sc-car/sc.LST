@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SC                                                                    04/14/2017 00:32:41 PAGE 1   
+C51 COMPILER V9.00   SC                                                                    04/15/2017 18:27:28 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SC
@@ -32,22 +32,22 @@ line level    source
   23   1      
   24   1              while(1)
   25   1              {
-  26   2                      
-  27   2                      steer_duty = 12;
-  28   2                      DelayMs(1000);
-  29   2                      steer_duty = 18;
-  30   2                      DelayMs(1000);
+  26   2                      // 舵机控制
+  27   2                      steer_duty = steer_left_duty;
+  28   2                      DelayMs(200);
+  29   2                      steer_duty = steer_right_duty;
+  30   2                      DelayMs(200);
   31   2      
-  32   2              }
-  33   1      
-  34   1      }
-  35          
-  36          
-  37          
-  38          
-  39          
-  40          
-  41          
+  32   2                      // 电平驱动左电机正转
+  33   2                      motor_left_in = MOTOR_ON;
+  34   2                      motor_left_out = MOTOR_OFF;
+  35   2                      // 电平驱动     
+  36   2                      motor_right_in = MOTOR_ON;
+  37   2                      motor_right_out = MOTOR_OFF;
+  38   2              }
+  39   1      
+  40   1      
+  41   1      }
   42          
   43          
   44          
@@ -55,15 +55,22 @@ line level    source
   46          
   47          
   48          
+  49          
+  50          
+  51          
+  52          
+  53          
+  54          
+  55          
+C51 COMPILER V9.00   SC                                                                    04/15/2017 18:27:28 PAGE 2   
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     25    ----
+   CODE SIZE        =     33    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.00   SC                                                                    04/14/2017 00:32:41 PAGE 2   
-
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

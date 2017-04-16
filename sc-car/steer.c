@@ -8,10 +8,10 @@
 #include "sc.h"
 
 // 舵机PWM波周期、计数器
-uint steer_pwm_t = 200, steer_pwm_counter = 0;
+uchar steer_pwm_t = 200, steer_pwm_counter = 0;
 
 // 舵机PWM占空比,范围:5/200~25/200 
-uchar steer_left_duty = 18, steer_right_duty = 12, steer_middle_duty = 15, steer_duty;
+uchar steer_left_duty = 14, steer_right_duty = 18, steer_middle_duty = 16, steer_duty = 0;
 
 /*-----------------------------------------------
   TODO：舵机初始化
@@ -24,7 +24,7 @@ void steer_init()
 	// 舵机计数器置位
 	steer_pwm_counter = 0;	
 	// 舵机初始位置置中
-	steer_duty = steer_middle;
+	steer_duty = steer_middle_duty;
 }
 
 /*-----------------------------------------------
@@ -35,8 +35,8 @@ void steer_init()
 ------------------------------------------------*/
 void steer_control(STEER_DIR steer_dir)
 {
-	// 舵机PWM波周期控制
-	if(steer_pwm_counter >= steer_pwm_t)
+	// 舵机周期控制
+	if(steer_pwm_counter == steer_pwm_t)
 	{
 		steer_pwm_counter = 0;
 	}
@@ -47,10 +47,10 @@ void steer_control(STEER_DIR steer_dir)
 			steer_left();
 			break;
 		case steer_dir_middle:
-			steer_middle();
+			steer_right();
 			break;
 		case steer_dir_right:
-			steer_right();
+			steer_middle();
 			break;
 	}
 	// 高电平占空
@@ -58,6 +58,7 @@ void steer_control(STEER_DIR steer_dir)
 		steer_out = 1;
 	else
 		steer_out = 0;
+	
 }
 
 /*-----------------------------------------------

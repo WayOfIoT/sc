@@ -23,13 +23,20 @@ void main()
 
 	while(1)
 	{
-		
-		steer_duty = 12;
-		DelayMs(1000);
-		steer_duty = 18;
-		DelayMs(1000);
+		// 舵机控制
+		steer_duty = steer_left_duty;
+		DelayMs(200);
+		steer_duty = steer_right_duty;
+		DelayMs(200);
 
+		// 电平驱动左电机正转
+		motor_left_in = MOTOR_ON;
+		motor_left_out = MOTOR_OFF;
+		// 电平驱动	
+		motor_right_in = MOTOR_ON;
+		motor_right_out = MOTOR_OFF;
 	}
+
 
 }
 
