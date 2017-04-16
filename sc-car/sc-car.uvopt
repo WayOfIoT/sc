@@ -216,7 +216,7 @@
       <Focus>0</Focus>
       <ColumnNumber>100</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
+      <TopLine>7</TopLine>
       <CurrentLine>25</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\sc.c</PathWithFileName>
@@ -244,7 +244,7 @@
       <Focus>0</Focus>
       <ColumnNumber>1</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>37</TopLine>
+      <TopLine>39</TopLine>
       <CurrentLine>67</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.c</PathWithFileName>
@@ -1717,19 +1717,19 @@
         <Doc>
           <Name>.\sc.c</Name>
           <ColumnNumber>100</ColumnNumber>
-          <TopLine>1</TopLine>
+          <TopLine>7</TopLine>
           <CurrentLine>25</CurrentLine>
         </Doc>
         <Doc>
           <Name>SC.H</Name>
           <ColumnNumber>14</ColumnNumber>
-          <TopLine>1</TopLine>
+          <TopLine>3</TopLine>
           <CurrentLine>31</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\timer.c</Name>
           <ColumnNumber>1</ColumnNumber>
-          <TopLine>37</TopLine>
+          <TopLine>39</TopLine>
           <CurrentLine>67</CurrentLine>
         </Doc>
         <Doc>
