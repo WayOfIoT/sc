@@ -25,11 +25,12 @@
 #include "steer.h"
 #include "motor.h"
 #include "sc_init.h"
+#include "led.h"
 
 /*    数据类型定义    */
 #define uint unsigned int
 #define uchar unsigned char
-
+#define ushort unsigned short
 
 
 #endif

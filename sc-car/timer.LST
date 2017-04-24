@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -15,126 +15,152 @@ line level    source
    6          ------------------------------------------------*/
    7          #include "sc.h"
    8          
-   9          /*-----------------------------------------------
-  10            TODO：定时器初始化
-  11            参数：
-  12            编写：夏杰
-  13            日期：2017.4.10
-  14          ------------------------------------------------*/
-  15          void timer_init()
-  16          {
-  17   1              // 定时器0,1初始化
-  18   1              TMOD = 0x11;
-  19   1      
-  20   1              // 定时器0定时初值设定
-  21   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
-  22   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
-  23   1              // 定时器1定时初值设定
-  24   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时200us,,即0.2ms
-  25   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256;
-  26   1      
-  27   1              // 使能总中断
-  28   1              EA = 1;
+   9          // 100us, 1ms, 1s 定时计数器
+  10          uchar timer_100us_counter = 0, timer_ms_counter = 0, timer_s_counter = 0;
+  11          
+  12          /*-----------------------------------------------
+  13            TODO：定时器初始化
+  14            参数：
+  15            编写：夏杰
+  16            日期：2017.4.10
+  17          ------------------------------------------------*/
+  18          void timer_init()
+  19          {
+  20   1              // 定时器0,1初始化
+  21   1              TMOD = 0x11;
+  22   1      
+  23   1              // 定时器0定时初值设定
+  24   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
+  25   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
+  26   1              // 定时器1定时初值设定
+  27   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时200us,,即0.2ms
+  28   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256;
   29   1      
-  30   1              // 使能内部中断0,1
-  31   1              ET0 = 1;
-  32   1              ET1 = 1;
-  33   1              
-  34   1              // 启动定时器0,1(start timer0,timer1)
-  35   1              TR0 = 1;
-  36   1              TR1 = 0;        
-  37   1      }
-  38          
-  39          /*-----------------------------------------------
-  40            TODO：定时器0中断函数
-  41            参数：
-  42            编写：夏杰
-  43            日期：2017.4.10
-  44          ------------------------------------------------*/
-  45          void timer0() interrupt 1 using 1
-  46          {       
-  47   1              // pause timer0
-  48   1              TR0 = 0;
-  49   1      
-  50   1              // 定时器重置
-  51   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
-  52   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
-  53   1      
-  54   1              /*---------------- 舵机控制 -----------------*/
-  55   1              // 舵机计数器累加
-C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 2   
+  30   1              // 使能总中断
+  31   1              EA = 1;
+  32   1      
+  33   1              // 使能内部中断0,1
+  34   1              ET0 = 1;
+  35   1              ET1 = 1;
+  36   1              
+  37   1              // 启动定时器0,1(start timer0,timer1)
+  38   1              TR0 = 1;
+  39   1              TR1 = 0;        
+  40   1      }
+  41          
+  42          /*-----------------------------------------------
+  43            TODO：定时器0中断函数
+  44            参数：
+  45            编写：夏杰
+  46            日期：2017.4.10
+  47          ------------------------------------------------*/
+  48          void timer0() interrupt 1 using 1
+  49          {       
+  50   1              // pause timer0
+  51   1              TR0 = 0;
+  52   1      
+  53   1              // 定时器重置
+  54   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
+  55   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
+C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 2   
 
-  56   1              steer_pwm_counter++;
-  57   1              // 舵机PWM波周期控制
-  58   1              if(steer_pwm_counter == steer_pwm_t)
-  59   1              {
-  60   2                      steer_pwm_counter = 0;
-  61   2              }
-  62   1              // 高电平占空
-  63   1              if(steer_pwm_counter <= steer_duty)     //PWM周期
-  64   1                      steer_out = 1;
-  65   1              else
-  66   1                      steer_out = 0;  
-  67   1                      
-  68   1      
-  69   1              // start timer0
-  70   1              TR0 = 1;
-  71   1      }
-  72          
-  73          
-  74          
-  75          void timer1() interrupt 3 using 2
-  76          {
-  77   1              // pause timer1
-  78   1      //      TR1 = 0;
+  56   1      
+  57   1              // 定时器计数器累加, timer_100us_counter
+  58   1              timer_100us_counter++;
+  59   1              // 1ms定时
+  60   1              if(timer_100us_counter >= 10)
+  61   1              {
+  62   2                      timer_100us_counter = 0;
+  63   2                      timer_ms_counter++;
+  64   2                      // 200ms 定时
+  65   2                      if((timer_ms_counter+1) % 200 == 0)
+  66   2                      {
+  67   3                              timer_ms_counter = 0;
+  68   3                              // 液晶刷新标识位
+  69   3                              led_refresh_flag = 1;
+  70   3                              timer_s_counter++;
+  71   3                              if(timer_s_counter >= 250)
+  72   3                              {
+  73   4                                      timer_s_counter = 0;
+  74   4                              }       
+  75   3                      }
+  76   2                      // 定时 1s
+  77   2      
+  78   2              }
   79   1      
-  80   1              // 定时器1定时值重置
-  81   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时100us,,即0.1ms
-  82   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256; 
-  83   1      
-  84   1              // 电机PWM波计数器
-  85   1              motor_pwm_counter++;
-  86   1              // 电机控制
-  87   1              motor_control(motor_left_dir_back, 10, motor_right_dir_forward, 10);
-  88   1      
-  89   1              // start timer1
-  90   1      //      TR1 = 1;
-  91   1      }
-  92          
-  93          
-  94          
-  95          
-  96          
-  97          
+  80   1              /*---------------- 舵机控制 -----------------*/
+  81   1              // 舵机计数器累加
+  82   1              steer_pwm_counter++;
+  83   1              // 舵机PWM波周期控制
+  84   1              if(steer_pwm_counter == steer_pwm_t)
+  85   1              {
+  86   2                      steer_pwm_counter = 0;
+  87   2              }
+  88   1              // 高电平占空
+  89   1              if(steer_pwm_counter <= steer_duty)     //PWM周期
+  90   1                      steer_out = 1;
+  91   1              else
+  92   1                      steer_out = 0;  
+  93   1                      
+  94   1      
+  95   1              // start timer0
+  96   1              TR0 = 1;
+  97   1      }
   98          
   99          
  100          
- 101          
- 102          
- 103          
- 104          
- 105          
- 106          
- 107          
- 108          
- 109          
- 110          
- 111          
- 112          
- 113          
- 114          
- 115          
- 116          
+ 101          void timer1() interrupt 3 using 2
+ 102          {
+ 103   1              // pause timer1
+ 104   1      //      TR1 = 0;
+ 105   1      
+ 106   1              // 定时器1定时值重置
+ 107   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时100us,,即0.1ms
+ 108   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256; 
+ 109   1      
+ 110   1              // 电机PWM波计数器
+ 111   1              motor_pwm_counter++;
+ 112   1              // 电机控制
+ 113   1              motor_control(motor_left_dir_back, 10, motor_right_dir_forward, 10);
+ 114   1      
+ 115   1              // start timer1
+ 116   1      //      TR1 = 1;
+ 117   1      }
+C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 3   
 
-C51 COMPILER V9.00   TIMER                                                                 04/15/2017 18:27:28 PAGE 3   
+ 118          
+ 119          
+ 120          
+ 121          
+ 122          
+ 123          
+ 124          
+ 125          
+ 126          
+ 127          
+ 128          
+ 129          
+ 130          
+ 131          
+ 132          
+ 133          
+ 134          
+ 135          
+ 136          
+ 137          
+ 138          
+ 139          
+ 140          
+ 141          
+ 142          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    123    ----
+   CODE SIZE        =    179    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =      3    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

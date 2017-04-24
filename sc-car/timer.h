@@ -12,6 +12,10 @@
 // (12M:timer_time = 200; 11.0582M:timer_time = 184;)
 #define TIMER1_T 180
 
+// 变量定义
+// 100us, 1ms, 1m 定时计数器
+extern unsigned char timer_100us_counter, timer_ms_counter, timer_s_counter;
+
 
 /*-----------------------------------------------
   TODO：定时器初始化

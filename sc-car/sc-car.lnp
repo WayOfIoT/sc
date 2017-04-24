@@ -4,6 +4,7 @@
 "sc.obj",
 "steer.obj",
 "timer.obj",
-"sc_init.obj" 
+"sc_init.obj",
+"led.obj" 
 TO "sc-car" 
 RAMSIZE(256) 

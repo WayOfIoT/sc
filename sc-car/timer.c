@@ -6,6 +6,9 @@
 ------------------------------------------------*/
 #include "sc.h"
 
+// 100us, 1ms, 1s 定时计数器
+uchar timer_100us_counter = 0, timer_ms_counter = 0, timer_s_counter = 0;
+
 /*-----------------------------------------------
   TODO：定时器初始化
   参数：
@@ -50,6 +53,29 @@ void timer0() interrupt 1 using 1
 	// 定时器重置
 	TH0 = (TIMER_FULL_T - TIMER0_T) / 256;	//定时100us,,即0.1ms
 	TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
+
+	// 定时器计数器累加, timer_100us_counter
+	timer_100us_counter++;
+	// 1ms定时
+	if(timer_100us_counter >= 10)
+	{
+		timer_100us_counter = 0;
+		timer_ms_counter++;
+		// 200ms 定时
+		if((timer_ms_counter+1) % 200 == 0)
+		{
+			timer_ms_counter = 0;
+			// 液晶刷新标识位
+			led_refresh_flag = 1;
+			timer_s_counter++;
+			if(timer_s_counter >= 250)
+			{
+				timer_s_counter = 0;
+			}	
+		}
+		// 定时 1s
+
+	}
 
 	/*---------------- 舵机控制 -----------------*/
 	// 舵机计数器累加
