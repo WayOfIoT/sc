@@ -381,6 +381,11 @@
               <FileType>1</FileType>
               <FilePath>.\sc_init.c</FilePath>
             </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\led.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -420,6 +425,11 @@
               <FileName>sc_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\sc_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\led.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -29,17 +29,6 @@ void LED_init();
 void led_wirte_str(unsigned char ucIdxX, unsigned char ucIdxY, unsigned char ucDataStr[]);
 
 /*****************************************************************************
- 函 数 名  : led_write_char
- 功能描述  : 显示一个6x8标准ASCII字符
- 输入参数  : uchar ucIdxX  显示的横坐标0~122
-             uchar ucIdxY  页范围0～7
-             uchar ucData  显示的字符
- 输出参数  : NONE
- 返 回 值  : NONE
-*****************************************************************************/
-void led_write_char(unsigned char ucIdxX, unsigned char ucIdxY, unsigned char ucData);
-
-/*****************************************************************************
  函 数 名  : led_write_num
  功能描述  : 将一个Char型数转换成3位数进行显示
  输入参数  : uchar ucIdxX    ucIdxX的范围为0～122

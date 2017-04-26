@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 04/25/2017 09:37:43 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -27,25 +27,25 @@ line level    source
   18          void timer_init()
   19          {
   20   1              // 定时器0,1初始化
-  21   1              TMOD = 0x11;
+  21   1              TMOD |= 0x01;
   22   1      
   23   1              // 定时器0定时初值设定
   24   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
   25   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
   26   1              // 定时器1定时初值设定
-  27   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时200us,,即0.2ms
-  28   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256;
+  27   1      //      TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时200us,,即0.2ms
+  28   1      //      TL1 = (TIMER_FULL_T - TIMER1_T) % 256;
   29   1      
   30   1              // 使能总中断
   31   1              EA = 1;
   32   1      
   33   1              // 使能内部中断0,1
   34   1              ET0 = 1;
-  35   1              ET1 = 1;
+  35   1      //      ET1 = 1;
   36   1              
   37   1              // 启动定时器0,1(start timer0,timer1)
   38   1              TR0 = 1;
-  39   1              TR1 = 0;        
+  39   1      //      TR1 = 0;        
   40   1      }
   41          
   42          /*-----------------------------------------------
@@ -62,7 +62,7 @@ line level    source
   53   1              // 定时器重置
   54   1              TH0 = (TIMER_FULL_T - TIMER0_T) / 256;  //定时100us,,即0.1ms
   55   1              TL0 = (TIMER_FULL_T - TIMER0_T) % 256;
-C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 2   
+C51 COMPILER V9.00   TIMER                                                                 04/25/2017 09:37:43 PAGE 2   
 
   56   1      
   57   1              // 定时器计数器累加, timer_100us_counter
@@ -109,24 +109,24 @@ line level    source
   98          
   99          
  100          
- 101          void timer1() interrupt 3 using 2
- 102          {
- 103   1              // pause timer1
- 104   1      //      TR1 = 0;
- 105   1      
- 106   1              // 定时器1定时值重置
- 107   1              TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时100us,,即0.1ms
- 108   1              TL1 = (TIMER_FULL_T - TIMER1_T) % 256; 
- 109   1      
- 110   1              // 电机PWM波计数器
- 111   1              motor_pwm_counter++;
- 112   1              // 电机控制
- 113   1              motor_control(motor_left_dir_back, 10, motor_right_dir_forward, 10);
- 114   1      
- 115   1              // start timer1
- 116   1      //      TR1 = 1;
- 117   1      }
-C51 COMPILER V9.00   TIMER                                                                 04/24/2017 16:26:41 PAGE 3   
+ 101          //void timer1() interrupt 3 using 2
+ 102          //{
+ 103          //      // pause timer1
+ 104          ////    TR1 = 0;
+ 105          //
+ 106          //      // 定时器1定时值重置
+ 107          //      TH1 = (TIMER_FULL_T - TIMER1_T) / 256;  //定时100us,,即0.1ms
+ 108          //      TL1 = (TIMER_FULL_T - TIMER1_T) % 256; 
+ 109          //
+ 110          //      // 电机PWM波计数器
+ 111          //      motor_pwm_counter++;
+ 112          //      // 电机控制
+ 113          //      motor_control(motor_left_dir_back, 10, motor_right_dir_forward, 10);
+ 114          //
+ 115          //      // start timer1
+ 116          ////    TR1 = 1;
+ 117          //}
+C51 COMPILER V9.00   TIMER                                                                 04/25/2017 09:37:43 PAGE 3   
 
  118          
  119          
@@ -156,7 +156,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    179    ----
+   CODE SIZE        =    114    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

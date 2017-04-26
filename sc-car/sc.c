@@ -21,8 +21,10 @@ void main()
 	// 系统初始化
 	sc_init();
 
+	DelayMs(500);
+
 	// 
-	led_wirte_str(20, 0, "xzit-XiaJie");
+	led_wirte_str(20, 0, "xzit-Xia Jie");
 
 	while(1)
 	{
@@ -36,7 +38,7 @@ void main()
 		if(led_refresh_flag == 1)
 		{
 			led_refresh_flag = 0;
-			led_write_num(10, 2, timer_s_counter/5);
+			led_write_num(10, 2, rec_data);
 		}
 
 

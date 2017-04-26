@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SC                                                                    04/24/2017 16:26:41 PAGE 1   
+C51 COMPILER V9.00   SC                                                                    04/25/2017 09:37:43 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SC
@@ -30,31 +30,31 @@ line level    source
   21   1              // 系统初始化
   22   1              sc_init();
   23   1      
-  24   1              // 
-  25   1              led_wirte_str(20, 0, "xzit-XiaJie");
-  26   1      
-  27   1              while(1)
-  28   1              {
-  29   2                      // 电平驱动左电机正转
-  30   2                      motor_left_in = MOTOR_ON;
-  31   2                      motor_left_out = MOTOR_OFF;
-  32   2                      // 电平驱动右电机正转   
-  33   2                      motor_right_in = MOTOR_ON;
-  34   2                      motor_right_out = MOTOR_OFF;
-  35   2                      steer_duty = steer_left_duty;
-  36   2                      if(led_refresh_flag == 1)
-  37   2                      {
-  38   3                              led_refresh_flag = 0;
-  39   3                              led_write_num(10, 2, timer_s_counter/5);
-  40   3                      }
-  41   2      
-  42   2      
-  43   2              }
-  44   1      
-  45   1      
-  46   1      }
-  47          
-  48          
+  24   1              DelayMs(500);
+  25   1      
+  26   1              // 
+  27   1              led_wirte_str(20, 0, "xzit-Xia Jie");
+  28   1      
+  29   1              while(1)
+  30   1              {
+  31   2                      // 电平驱动左电机正转
+  32   2                      motor_left_in = MOTOR_ON;
+  33   2                      motor_left_out = MOTOR_OFF;
+  34   2                      // 电平驱动右电机正转   
+  35   2                      motor_right_in = MOTOR_ON;
+  36   2                      motor_right_out = MOTOR_OFF;
+  37   2                      steer_duty = steer_left_duty;
+  38   2                      if(led_refresh_flag == 1)
+  39   2                      {
+  40   3                              led_refresh_flag = 0;
+  41   3                              led_write_num(10, 2, rec_data);
+  42   3                      }
+  43   2      
+  44   2      
+  45   2              }
+  46   1      
+  47   1      
+  48   1      }
   49          
   50          
   51          
@@ -62,18 +62,20 @@ line level    source
   53          
   54          
   55          
-C51 COMPILER V9.00   SC                                                                    04/24/2017 16:26:41 PAGE 2   
+C51 COMPILER V9.00   SC                                                                    04/25/2017 09:37:43 PAGE 2   
 
   56          
   57          
   58          
   59          
   60          
+  61          
+  62          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     51    ----
-   CONSTANT SIZE    =     12    ----
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =     13    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----

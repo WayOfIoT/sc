@@ -19,11 +19,10 @@ void sc_init()
 	steer_init();
 	// 电机驱动初始化
 	motor_init();
-	// 蓝牙通信初始化
-	blueteeth_init();
 	// OLED初始化
 	LED_init();
-
+	// 蓝牙通信初始化
+	blueteeth_init();
 
 	// 定时器初始化
 	timer_init();
