@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--    app_name	-->
+    <string name="app_name">智能车</string>
+    
+	<!--    蓝牙-->
+    <string name="device_scan">扫描</string>
+    <string name="device_switch">打开</string>
+    
+	<!--    重力感应-->
+    <string name="gravity_open">重力感应开</string>
+    <string name="gravity_close">重力感应关</string>
+    
+	<!--    退出系统-->
+    <string name="exit_button">退出</string>
+    
+	<!--    方向按钮 -->
+    <string name="dir_forward">前进</string>
+    <string name="dir_back">倒车</string>
+    <string name="dir_left">左转</string>
+    <string name="dir_right">右转</string>
+    
+    <string name="select_device">选择设备</string>
+
+</resources>
