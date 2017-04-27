@@ -6,7 +6,6 @@
 	<!--    退出系统-->
     <string name="exit_button">退出</string>
     <string name="about_button">关于</string>
-    <string name="about_title">关于</string>
     <string name="main_title">蓝牙遥控车客户端 @夏杰</string>
     
 	<!--    蓝牙-->
@@ -46,5 +45,15 @@
     
     
     <string name="discoverable">Make Discoverable</string>
+    <!-- About -->
+    <string name="about_label">关于</string>
+    <string name="about_title">使用与说明</string>
+    <string name="about_text1">蓝牙连接：点击连接；扫描查找设备，点击连接蓝牙设备，等待连接完成； </string>
+    <string name="about_text2">按键控制：点击方向键控制小车运动；</string>
+    <string name="about_text3">重力控制：点击启用重力，控制小车运动，用完点击关闭重力；</string>
+    <string name="about_text4">出品人：桂林电子科技大学，三院科协</string>
+    <string name="about_text5">最终解释权归桂林电子科技大学三院科协所有</string>
+    <string name="about_text6">YFRobot出品</string>
+    <string name="about_return">返回</string>
 
 </resources>

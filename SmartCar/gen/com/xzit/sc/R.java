@@ -11,16 +11,12 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int alient_desk=0x7f020000;
-        public static final int alient_machine=0x7f020001;
-        public static final int blue=0x7f020002;
-        public static final int cold_fire=0x7f020003;
-        public static final int global=0x7f020004;
-        public static final int horse=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int message=0x7f020007;
-        public static final int motor=0x7f020008;
-        public static final int xzit=0x7f020009;
+        public static final int blue=0x7f020000;
+        public static final int cold_fire=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int message=0x7f020003;
+        public static final int sc_background=0x7f020004;
+        public static final int xzit=0x7f020005;
     }
     public static final class id {
         public static final int about_button=0x7f070004;
@@ -57,48 +53,58 @@ public final class R {
     }
     public static final class string {
         public static final int about_button=0x7f040002;
-        public static final int about_title=0x7f040003;
+        /**  About 
+         */
+        public static final int about_label=0x7f04001e;
+        public static final int about_return=0x7f040026;
+        public static final int about_text1=0x7f040020;
+        public static final int about_text2=0x7f040021;
+        public static final int about_text3=0x7f040022;
+        public static final int about_text4=0x7f040023;
+        public static final int about_text5=0x7f040024;
+        public static final int about_text6=0x7f040025;
+        public static final int about_title=0x7f04001f;
         /**     app_name	
          */
         public static final int app_name=0x7f040000;
-        public static final int bt_not_enabled=0x7f04001d;
-        public static final int button_cancel=0x7f04001a;
-        public static final int button_scan=0x7f040015;
+        public static final int bt_not_enabled=0x7f04001c;
+        public static final int button_cancel=0x7f040019;
+        public static final int button_scan=0x7f040014;
         /**     蓝牙
          */
-        public static final int device_scan=0x7f040005;
-        public static final int device_switch=0x7f040006;
+        public static final int device_scan=0x7f040004;
+        public static final int device_switch=0x7f040005;
         /**     方向按钮 
          */
-        public static final int dir1=0x7f040009;
-        public static final int dir2=0x7f04000a;
-        public static final int dir3=0x7f04000b;
-        public static final int dir4=0x7f04000c;
-        public static final int dir5=0x7f04000d;
-        public static final int dir6=0x7f04000e;
-        public static final int dir7=0x7f04000f;
-        public static final int dir8=0x7f040010;
-        public static final int dir9=0x7f040011;
-        public static final int discoverable=0x7f04001e;
+        public static final int dir1=0x7f040008;
+        public static final int dir2=0x7f040009;
+        public static final int dir3=0x7f04000a;
+        public static final int dir4=0x7f04000b;
+        public static final int dir5=0x7f04000c;
+        public static final int dir6=0x7f04000d;
+        public static final int dir7=0x7f04000e;
+        public static final int dir8=0x7f04000f;
+        public static final int dir9=0x7f040010;
+        public static final int discoverable=0x7f04001d;
         /**     退出系统
          */
         public static final int exit_button=0x7f040001;
-        public static final int gravity_close=0x7f040008;
+        public static final int gravity_close=0x7f040007;
         /**     重力感应
          */
-        public static final int gravity_open=0x7f040007;
-        public static final int main_title=0x7f040004;
-        public static final int none_found=0x7f040017;
-        public static final int none_paired=0x7f040016;
+        public static final int gravity_open=0x7f040006;
+        public static final int main_title=0x7f040003;
+        public static final int none_found=0x7f040016;
+        public static final int none_paired=0x7f040015;
         /**  Scan 
          */
-        public static final int scan_label=0x7f040012;
-        public static final int scanning=0x7f040018;
-        public static final int select_device=0x7f040019;
-        public static final int title_connecting=0x7f04001b;
-        public static final int title_disconnected=0x7f04001c;
-        public static final int title_other_devices=0x7f040014;
-        public static final int title_paired_devices=0x7f040013;
+        public static final int scan_label=0x7f040011;
+        public static final int scanning=0x7f040017;
+        public static final int select_device=0x7f040018;
+        public static final int title_connecting=0x7f04001a;
+        public static final int title_disconnected=0x7f04001b;
+        public static final int title_other_devices=0x7f040013;
+        public static final int title_paired_devices=0x7f040012;
     }
     public static final class style {
         /** 
