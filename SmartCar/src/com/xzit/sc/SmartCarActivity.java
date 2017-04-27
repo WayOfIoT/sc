@@ -62,14 +62,14 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	private String deviceConnectedName;
 	
 	// 遥控命令协议
-	String FORWARD = "2";
-	String BACK = "8";
+	String FORWARD = "1";
+	String BACK = "2";
 	String STOP = "0";
-	String LEFT = "1";
-	String RIGHT = "3";
-	String LEFT_LOOP = "4";
+	String LEFT = "3";
+	String RIGHT = "4";
+	String LEFT_LOOP = "5";
 	String RIGHT_LOOP = "6";
-	String TOGGLE_XUNXIAN = "5";
+	String TOGGLE_XUNXIAN = "8";
 	String LEFT_BACK = "7";
 	String RIGHT_BACK = "9";
 	
@@ -194,7 +194,7 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		
 		// 扫描设备
 		case R.id.device_scan:
-			if (bluetoothService.getBluetoothState() != BluetoothService.STATE_CONNECTED){
+			if (bluetoothService != null && bluetoothService.getState() != BluetoothService.STATE_CONNECTED){
     			Intent serverIntent = new Intent(this, Scan.class);
     			startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
     		} else {    			
@@ -233,7 +233,7 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	 */
 	private void sendCommand(String command) {
 		// 蓝牙处于连接状态则发送数据 
-		if (bluetoothService.getBluetoothState() != BluetoothService.STATE_CONNECTED) {
+		if (bluetoothService.getState() != BluetoothService.STATE_CONNECTED) {
 			return ;
 		}
 		// 校验命令
