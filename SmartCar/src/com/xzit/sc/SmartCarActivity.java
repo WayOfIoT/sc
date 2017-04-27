@@ -2,16 +2,23 @@ package com.xzit.sc;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +60,18 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	private BluetoothService bluetoothService;
 	// 已连接蓝牙设备的名称
 	private String deviceConnectedName;
+	
+	// 遥控命令协议
+	String FORWARD = "2";
+	String BACK = "8";
+	String STOP = "0";
+	String LEFT = "1";
+	String RIGHT = "3";
+	String LEFT_LOOP = "4";
+	String RIGHT_LOOP = "6";
+	String TOGGLE_XUNXIAN = "5";
+	String LEFT_BACK = "7";
+	String RIGHT_BACK = "9";
 	
 	
 	
@@ -159,25 +178,42 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	}
 	
     
-    
+    /**
+     * @Title: onClick
+     * @Description: TODO 主界面按钮点击事件
+     * @param @param v 
+     * @throws
+     * @author: 夏杰 1272570701@qq.com
+     * @date: 2017-4-27
+     */
 	@Override
 	public void onClick(View v) {
 		
 		// 判断按钮点击事件
 		switch (v.getId()) {
+		
+		// 扫描设备
 		case R.id.device_scan:
-			
+			if (bluetoothService.getBluetoothState() != BluetoothService.STATE_CONNECTED){
+    			Intent serverIntent = new Intent(this, Scan.class);
+    			startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
+    		} else {    			
+    			deviceScanText.setText("连接");
+    			bluetoothService.close();
+    		}
 			break;
 			
-			// 开启重力感应
+		// 开启重力感应
 		case R.id.gravity_open:
 			Toast.makeText(this, "开启重力感应", Toast.LENGTH_SHORT).show();
 			break;
-			
+		
+		// 关闭重力感应
 		case R.id.gravity_close:
 			Toast.makeText(this, "关闭重力感应", Toast.LENGTH_SHORT).show();
+			break;
 			
-			// 退出软件
+		// 退出软件
 		case R.id.exit_button:
 			bluetoothService.close();
 			finish();
@@ -186,11 +222,281 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		
 	}
 	
-	
-	
-	
-	
-	public void directionControl() {
-		
+	/**
+	 * @Title: sendCommand
+	 * @Description: TODO 通过蓝牙发送命令
+	 * @param @param command 待发送的命令  
+	 * @return void 
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-27
+	 */
+	private void sendCommand(String command) {
+		// 蓝牙处于连接状态则发送数据 
+		if (bluetoothService.getBluetoothState() != BluetoothService.STATE_CONNECTED) {
+			return ;
+		}
+		// 校验命令
+		if(command != null && command.length() > 0){
+			// 获取命令字符流
+			byte[] commandBytes = command.getBytes();
+			// 发送数据
+			bluetoothService.write(commandBytes);
+		}
 	}
+	
+	/**
+	 * @Title: addCommandToButton
+	 * @Description: TODO 给按钮添加触摸事件
+	 * @param @param buttonId 按钮ID
+	 * @param @param command 待添加命令  
+	 * @return void 
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-27
+	 */
+	private void addCommandToButton(int buttonId, final String command) {
+		// 通过Id获取按钮
+		Button button = (Button)findViewById(buttonId);
+		// 给按钮添加触摸事件
+		button.setOnTouchListener(new Button.OnTouchListener() 
+        {
+         	@Override
+             public boolean onTouch(View v, MotionEvent event) {
+                 int action = event.getAction();
+                 switch(action)
+                 {
+                 case MotionEvent.ACTION_DOWN:
+                	 sendCommand(command);
+                     break;
+                 case MotionEvent.ACTION_UP:
+                	 sendCommand(STOP);
+                     break;
+                 }
+                 return false;
+             }
+         });
+	}
+	
+	/**
+	 * @Title: directionControl
+	 * @Description: TODO 智能车方向控制
+	 * @param    
+	 * @return void 
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-27
+	 */
+	public void directionControl() {
+		// Debugging
+		if(D) Log.e(TAG, " + + + direction control + + + ");
+		
+		// 停车按钮添加点击事件
+		Button dirStopBtn = (Button) findViewById(R.id.dir_stop);
+		dirStopBtn.setOnClickListener(new Button.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				sendCommand(STOP);
+			}
+		});
+		
+		// 给方向按钮添加事件
+		addCommandToButton(R.id.dir_forward, FORWARD);
+		addCommandToButton(R.id.dir_left, LEFT);
+		addCommandToButton(R.id.dir_right, RIGHT); 
+		addCommandToButton(R.id.dir_back, BACK);
+		addCommandToButton(R.id.left_loop_button, LEFT_LOOP);  
+		addCommandToButton(R.id.right_loop_button, RIGHT_LOOP);
+		addCommandToButton(R.id.left_dir_back, LEFT_BACK);
+		addCommandToButton(R.id.right_loop_button, RIGHT_BACK);
+		
+		// 初始化蓝牙服务类，进行蓝牙连接(Initialize the BTService to perform bluetooth connections)
+		bluetoothService = new BluetoothService(this, bluetoothHandler);
+	}
+	
+	
+	
+	private final Handler bluetoothHandler = new Handler(){
+		@Override
+    	public void handleMessage (Message msg) {
+            switch (msg.what) {
+            case MESSAGE_STATE_CHANGE:
+            	if(D) Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
+            	switch (msg.arg1) {
+            	case BluetoothService.STATE_CONNECTED:
+            		Toast.makeText(getApplicationContext(), R.string.title_connecting, Toast.LENGTH_SHORT).show();
+                	deviceScanText.setText("断开");
+                    break;
+                case BluetoothService.STATE_CONNECTING:
+                    break;
+                case BluetoothService.STATE_LISTEN:
+                case BluetoothService.STATE_NONE:
+                	deviceScanText.setText("连接");
+                    break;
+                case BluetoothService.STATE_CLOSE:
+                	Toast.makeText(getApplicationContext(), R.string.title_disconnected, Toast.LENGTH_SHORT).show();
+                	deviceScanText.setText("连接");
+                	break;
+                }
+                break;
+                
+            case MESSAGE_DEVICE_NAME:
+                // save the connected device's name
+                deviceConnectedName = msg.getData().getString(DEVICE_NAME);
+                Toast.makeText(getApplicationContext(), "Connected to " + deviceConnectedName, Toast.LENGTH_SHORT).show();
+                break;
+            case MESSAGE_TOAST:
+                Toast.makeText(getApplicationContext(), msg.getData().getString(TOAST), Toast.LENGTH_SHORT).show();
+                break;
+                
+            }
+        }
+	};
+	
+	/**
+	 * @Title: onResume
+	 * @Description: TODO 回到主界面时监听传感器
+	 * @param  
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-27
+	 */
+	@Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+    
+	/**
+	 * @Title: onPause
+	 * @Description: TODO 离开主界面时取消监听传感器
+	 * @param  
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-27
+	 */
+    @Override
+    public synchronized void onPause() {
+    	super.onPause();
+        if(D) Log.e(TAG, "- ON PAUSE -");
+        sensorManager.unregisterListener(sensorEventListener);
+    }
+    
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(D) Log.e(TAG, "-- ON STOP --"); 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();          
+        if(D) Log.e(TAG, "--- ON DESTROY ---");
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
+    	// Inflate the menu; this adds items to the action bar if it is present.
+       	getMenuInflater().inflate(R.menu.menu, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+      //  Intent serverIntent = null;
+        switch (item.getItemId()) {
+        case R.id.discoverable:
+        	// Ensure this device is discoverable by others
+        	ensureDiscoverable();
+            return true;
+        }
+        return false;
+        
+    }
+    
+    /**
+     * @Title: ensureDiscoverable
+     * @Description: TODO 确保设备能被搜索
+     * @param    
+     * @return void 
+     * @throws
+     * @author: 夏杰 1272570701@qq.com
+     * @date: 2017-4-27
+     */
+    private void ensureDiscoverable() 
+    {
+    	// Debugging
+        if(D) Log.d(TAG, "ensure discoverable");
+        // 
+        if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) 
+        {
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            startActivity(discoverableIntent);
+        }
+    }
+	
+    /**
+     * @Title: onActivityResult
+     * @Description: TODO
+     * @param @param requestCode
+     * @param @param resultCode
+     * @param @param data 
+     * @throws
+     * @author: 夏杰 1272570701@qq.com
+     * @date: 2017-4-27
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	// Debugging
+        if(D) Log.d(TAG, "onActivityResult " + resultCode);
+        // 
+        switch (requestCode) {
+        case REQUEST_CONNECT_DEVICE_SECURE:
+            // When DeviceListActivity returns with a device to connect
+            if (resultCode == Activity.RESULT_OK) {          
+                connectDevice(data, true);
+            }
+            break;
+        case CLOSE_CONNECT:
+            connectDevice(data, false);
+            
+        case REQUEST_ENABLE_BT:
+            // When the request to enable Bluetooth returns
+            if (resultCode == Activity.RESULT_OK) {
+            	directionControl();
+            } 
+            else {
+            	// User did not enable Bluetooth or an error occurred
+                Log.d(TAG, "Bluetooth not enabled");
+                Toast.makeText(this, R.string.bt_not_enabled, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+    
+    /**
+     * @Title: connectDevice
+     * @Description: TODO 连接设备
+     * @param @param data
+     * @param @param secure   
+     * @return void 
+     * @throws
+     * @author: 夏杰 1272570701@qq.com
+     * @date: 2017-4-27
+     */
+    private void connectDevice(Intent data, boolean secure) {     
+    	// Get the device MAC address 获取设备的MAC地址
+        String address = data.getExtras().getString(Scan.EXTRA_DEVICE_ADDRESS);
+        // Get the BluetoothDevice object  BluetoothDevice对象
+        BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
+               
+        // Attempt to connect to the device 尝试连接到设备
+        bluetoothService.connect(device, secure);
+        
+    }
+	
+	
+	
+
 }

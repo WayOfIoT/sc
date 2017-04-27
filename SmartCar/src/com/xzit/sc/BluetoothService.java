@@ -15,6 +15,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+/**
+ * @ClassName: BluetoothService
+ * @Description: TODO 蓝牙服务
+ * @author 夏杰 1272570701@qq.com
+ * @date 2017-4-27 下午07:35:29
+ */
 public class BluetoothService {
 	
 	// Debugging
@@ -72,7 +78,7 @@ public class BluetoothService {
 	 * @date: 2017-4-27
 	 */
     public synchronized int getBluetoothState() {
-		return bluetoothState;
+		return this.bluetoothState;
 	}
 
     /**
@@ -84,8 +90,13 @@ public class BluetoothService {
      * @author: 夏杰 1272570701@qq.com
      * @date: 2017-4-27
      */
-	public synchronized void setBluetoothState(int bluetoothState) {
+	private synchronized void setBluetoothState(int bluetoothState) {
+		// Debugging
+		if (D) Log.d(TAG, "setState() " + this.bluetoothState + " -> " + bluetoothState);
 		this.bluetoothState = bluetoothState;
+		
+		// 更新处理器状态，向主界面发送提示信息(Give the new state to the Handler so the UI Activity can update)
+		bluetoothHandler.obtainMessage(SmartCarActivity.MESSAGE_STATE_CHANGE, bluetoothState, -1).sendToTarget();
 	}
     
 	

@@ -3,6 +3,12 @@
 	<!--    app_name	-->
     <string name="app_name">智能车</string>
     
+	<!--    退出系统-->
+    <string name="exit_button">退出</string>
+    <string name="about_button">关于</string>
+    <string name="about_title">关于</string>
+    <string name="main_title">蓝牙遥控车-客户端</string>
+    
 	<!--    蓝牙-->
     <string name="device_scan">扫描</string>
     <string name="device_switch">打开</string>
@@ -11,15 +17,34 @@
     <string name="gravity_open">重力感应开</string>
     <string name="gravity_close">重力感应关</string>
     
-	<!--    退出系统-->
-    <string name="exit_button">退出</string>
-    
 	<!--    方向按钮 -->
     <string name="dir_forward">前进</string>
     <string name="dir_back">倒车</string>
     <string name="dir_left">左转</string>
     <string name="dir_right">右转</string>
+    <string name="dir_stop">停车</string>
+    <string name="left_back">左后</string>
+    <string name="left_loop">左前</string>
+    <string name="back_left">后左</string>
+    <string name="right_loop">右前</string>
     
-    <string name="select_device">选择设备</string>
+    <!-- Scan -->
+    <string name="scan_label">连接</string>
+    <string name="title_paired_devices">已配对设备</string>
+    <string name="title_other_devices">其他可用的设备</string>
+    <string name="button_scan">扫描查找设备 </string>
+    <string name="none_paired">没有设备已经被配对</string>
+    <string name="none_found">找不到设备 </string>
+    <string name="scanning">扫描设备。。。</string>
+    <string name="select_device">选择一个设备连接</string>
+    <string name="button_cancel">取消</string>
+    
+    
+    <string name="title_connecting">已连接</string>
+    <string name="title_disconnected">未连接</string>
+    <string name="bt_not_enabled">蓝牙不启用</string>
+    
+    
+    <string name="discoverable">Make Discoverable</string>
 
 </resources>
