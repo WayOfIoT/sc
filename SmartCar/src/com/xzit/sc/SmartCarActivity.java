@@ -112,8 +112,8 @@ public class SmartCarActivity extends Activity implements OnClickListener {
         // 设备不支持蓝牙(Device do not support bluetooth)
         if(bluetoothAdapter == null){
         	Toast.makeText(this, "设备不支持蓝牙", Toast.LENGTH_LONG).show();
-//        	finish();
-//        	return;
+        	finish();
+        	return;
         }
         //蓝牙开关
         deviceSwitchText.setOnClickListener(new OnClickListener() {
@@ -135,22 +135,7 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		});
         
     }
-    
-    
-	@Override
-	public void onClick(View v) {
-		
-		// 判断按钮点击事件
-		switch (v.getId()) {
-		case R.id.device_scan:
-			
-			break;
 
-		default:
-			break;
-		}
-		
-	}
 	
 	@Override
 	protected void onStart() {
@@ -167,6 +152,45 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		} else {
 			deviceSwitchText.setText("关闭");
 			// 控制小车
+			if (bluetoothService == null) {
+				directionControl();
+			}
 		}
+	}
+	
+    
+    
+	@Override
+	public void onClick(View v) {
+		
+		// 判断按钮点击事件
+		switch (v.getId()) {
+		case R.id.device_scan:
+			
+			break;
+			
+			// 开启重力感应
+		case R.id.gravity_open:
+			Toast.makeText(this, "开启重力感应", Toast.LENGTH_SHORT).show();
+			break;
+			
+		case R.id.gravity_close:
+			Toast.makeText(this, "关闭重力感应", Toast.LENGTH_SHORT).show();
+			
+			// 退出软件
+		case R.id.exit_button:
+			bluetoothService.close();
+			finish();
+			break;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	public void directionControl() {
+		
 	}
 }
