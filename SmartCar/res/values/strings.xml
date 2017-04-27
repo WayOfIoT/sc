@@ -18,15 +18,15 @@
     <string name="gravity_close">重力感应关</string>
     
 	<!--    方向按钮 -->
-    <string name="dir_forward">前进</string>
-    <string name="dir_back">倒车</string>
-    <string name="dir_left">左转</string>
-    <string name="dir_right">右转</string>
-    <string name="dir_stop">停车</string>
-    <string name="left_back">左后</string>
-    <string name="left_loop">左前</string>
-    <string name="right_back">右后</string>
-    <string name="right_loop">右前</string>
+    <string name="dir1">左前</string>
+    <string name="dir2">前进</string>
+    <string name="dir3">右前</string>
+    <string name="dir4">左转</string>
+    <string name="dir5">停车</string>
+    <string name="dir6">右转</string>
+    <string name="dir7">左后</string>
+    <string name="dir8">倒车</string>
+    <string name="dir9">右后</string>
     
     <!-- Scan -->
     <string name="scan_label">连接</string>

@@ -101,6 +101,13 @@ public class SmartCarActivity extends Activity implements OnClickListener {
         // 设置布局
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
+        
+		// 按钮布局
+		findViewById(R.id.dir1).setVisibility(View.INVISIBLE);
+		findViewById(R.id.dir3).setVisibility(View.INVISIBLE);
+		findViewById(R.id.dir7).setVisibility(View.INVISIBLE);
+		findViewById(R.id.dir9).setVisibility(View.INVISIBLE);
+        
         // 横屏显示
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         
@@ -171,12 +178,6 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		
 		// 软件开始运行日志输出
 		if(D) Log.e(TAG, TAG_LINE + "on start" + TAG_LINE);
-		
-		// 按钮布局
-//		findViewById(R.id.left_dir_back).setVisibility(View.INVISIBLE);
-//		findViewById(R.id.left_loop_button).setVisibility(View.INVISIBLE);
-//		findViewById(R.id.right_dir_back).setVisibility(View.INVISIBLE);
-//		findViewById(R.id.right_loop_button).setVisibility(View.INVISIBLE);
 		
 		// 请求启用蓝牙
 		if(!bluetoothAdapter.isEnabled()){
@@ -310,7 +311,7 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		if(D) Log.e(TAG, " + + + direction control + + + ");
 		
 		// 停车按钮添加点击事件
-		Button dirStopBtn = (Button) findViewById(R.id.dir_stop);
+		Button dirStopBtn = (Button) findViewById(R.id.dir5);
 		dirStopBtn.setOnClickListener(new Button.OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -319,10 +320,10 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		});
 		
 		// 给方向按钮添加事件
-		addCommandToButton(R.id.dir_forward, FORWARD);
-		addCommandToButton(R.id.dir_left, LEFT);
-		addCommandToButton(R.id.dir_right, RIGHT); 
-		addCommandToButton(R.id.dir_back, BACK);
+		addCommandToButton(R.id.dir2, FORWARD);
+		addCommandToButton(R.id.dir4, LEFT);
+		addCommandToButton(R.id.dir6, RIGHT); 
+		addCommandToButton(R.id.dir8, BACK);
 		
 		// 初始化蓝牙服务类，进行蓝牙连接(Initialize the BTService to perform bluetooth connections)
 		bluetoothService = new BluetoothService(this, bluetoothHandler);

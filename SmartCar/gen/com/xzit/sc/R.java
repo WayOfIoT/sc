@@ -27,23 +27,23 @@ public final class R {
         public static final int button_cancel=0x7f070015;
         public static final int button_scan=0x7f070014;
         public static final int device_scan=0x7f070001;
-        public static final int device_switch=0x7f070006;
-        public static final int dir_back=0x7f07000e;
-        public static final int dir_forward=0x7f070005;
-        public static final int dir_left=0x7f070008;
-        public static final int dir_right=0x7f070009;
-        public static final int dir_stop=0x7f07000a;
+        public static final int device_switch=0x7f070009;
+        public static final int dir1=0x7f070007;
+        public static final int dir2=0x7f070005;
+        public static final int dir3=0x7f070008;
+        public static final int dir4=0x7f07000c;
+        public static final int dir5=0x7f07000a;
+        public static final int dir6=0x7f07000f;
+        public static final int dir7=0x7f07000b;
+        public static final int dir8=0x7f07000e;
+        public static final int dir9=0x7f07000d;
         public static final int discoverable=0x7f070016;
         public static final int exit_button=0x7f070002;
         public static final int gravity_close=0x7f070003;
         public static final int gravity_open=0x7f070000;
-        public static final int left_dir_back=0x7f07000b;
-        public static final int left_loop_button=0x7f07000c;
         public static final int new_devices=0x7f070013;
         public static final int paired_devices=0x7f070011;
-        public static final int right_dir_back=0x7f07000d;
-        public static final int right_loop_button=0x7f07000f;
-        public static final int textView1=0x7f070007;
+        public static final int textView1=0x7f070006;
         public static final int title_new_devices=0x7f070012;
         public static final int title_paired_devices=0x7f070010;
     }
@@ -68,13 +68,17 @@ public final class R {
          */
         public static final int device_scan=0x7f040005;
         public static final int device_switch=0x7f040006;
-        public static final int dir_back=0x7f04000a;
         /**     方向按钮 
          */
-        public static final int dir_forward=0x7f040009;
-        public static final int dir_left=0x7f04000b;
-        public static final int dir_right=0x7f04000c;
-        public static final int dir_stop=0x7f04000d;
+        public static final int dir1=0x7f040009;
+        public static final int dir2=0x7f04000a;
+        public static final int dir3=0x7f04000b;
+        public static final int dir4=0x7f04000c;
+        public static final int dir5=0x7f04000d;
+        public static final int dir6=0x7f04000e;
+        public static final int dir7=0x7f04000f;
+        public static final int dir8=0x7f040010;
+        public static final int dir9=0x7f040011;
         public static final int discoverable=0x7f04001e;
         /**     退出系统
          */
@@ -83,13 +87,9 @@ public final class R {
         /**     重力感应
          */
         public static final int gravity_open=0x7f040007;
-        public static final int left_back=0x7f04000e;
-        public static final int left_loop=0x7f04000f;
         public static final int main_title=0x7f040004;
         public static final int none_found=0x7f040017;
         public static final int none_paired=0x7f040016;
-        public static final int right_back=0x7f040010;
-        public static final int right_loop=0x7f040011;
         /**  Scan 
          */
         public static final int scan_label=0x7f040012;
