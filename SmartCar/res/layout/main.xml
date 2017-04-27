@@ -36,7 +36,7 @@
         android:layout_alignLeft="@+id/gravity_open"
         android:layout_alignParentBottom="true"
         android:text="@string/gravity_close" />
-
+    
     <Button
         android:id="@+id/about_button"
         android:layout_width="65dp"
@@ -44,7 +44,15 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/dir_forward"
         android:text="@string/about_button" />
-
+    
+    <Button
+        android:id="@+id/device_switch"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gravity_close"
+        android:layout_alignParentRight="true"
+        android:text="@string/device_switch" />
+ 	
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -58,7 +66,7 @@
     <Button
         android:id="@+id/dir_forward"
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/device_scan"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/dir_left"
@@ -67,7 +75,7 @@
     <Button
         android:id="@+id/dir_left"
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dir_forward"
         android:layout_alignParentLeft="true"
         android:text="@string/dir_left" />
@@ -75,22 +83,23 @@
     <Button
         android:id="@+id/dir_right"
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/about_button"
         android:layout_toRightOf="@+id/dir_forward"
         android:text="@string/dir_right" />
-
+    
     <Button
-        android:id="@+id/device_switch"
-        android:layout_width="65dp"
+        android:id="@+id/left_dir_back"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/gravity_close"
-        android:layout_alignParentRight="true"
-        android:text="@string/device_switch" />
-
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dir_left"
+        android:layout_below="@+id/dir_stop"
+        android:text="@string/left_back" />
+    
     <Button
         android:id="@+id/dir_stop"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/dir_forward"
         android:layout_alignRight="@+id/dir_forward"
@@ -98,17 +107,8 @@
         android:text="@string/dir_stop" />
 
     <Button
-        android:id="@+id/left_dir_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/dir_left"
-        android:layout_below="@+id/dir_stop"
-        android:text="@string/left_back" />
-
-    <Button
         android:id="@+id/left_loop_button"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/dir_stop"
         android:layout_alignParentLeft="true"
@@ -117,30 +117,20 @@
 
     <Button
         android:id="@+id/right_dir_back"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/dir_right"
         android:layout_alignRight="@+id/dir_right"
         android:layout_alignTop="@+id/dir_back"
-        android:text="@string/back_left" />
+        android:text="@string/right_back" />
 
     <Button
         android:id="@+id/right_loop_button"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/right_dir_back"
         android:layout_alignLeft="@+id/right_dir_back"
         android:layout_alignRight="@+id/dir_right"
         android:text="@string/right_loop" />
-
-    <Button
-        android:id="@+id/dir_back"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignBottom="@+id/left_dir_back"
-        android:layout_below="@+id/dir_stop"
-        android:layout_toLeftOf="@+id/right_dir_back"
-        android:text="@string/dir_back" />
-
 
 </RelativeLayout>

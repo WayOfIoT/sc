@@ -7,7 +7,7 @@
     <string name="exit_button">退出</string>
     <string name="about_button">关于</string>
     <string name="about_title">关于</string>
-    <string name="main_title">蓝牙遥控车-客户端</string>
+    <string name="main_title">蓝牙遥控车客户端 @夏杰</string>
     
 	<!--    蓝牙-->
     <string name="device_scan">扫描</string>
@@ -25,7 +25,7 @@
     <string name="dir_stop">停车</string>
     <string name="left_back">左后</string>
     <string name="left_loop">左前</string>
-    <string name="back_left">后左</string>
+    <string name="right_back">右后</string>
     <string name="right_loop">右前</string>
     
     <!-- Scan -->

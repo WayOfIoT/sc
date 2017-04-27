@@ -27,11 +27,11 @@ public final class R {
         public static final int button_cancel=0x7f070015;
         public static final int button_scan=0x7f070014;
         public static final int device_scan=0x7f070001;
-        public static final int device_switch=0x7f070009;
+        public static final int device_switch=0x7f070006;
         public static final int dir_back=0x7f07000e;
         public static final int dir_forward=0x7f070005;
-        public static final int dir_left=0x7f070007;
-        public static final int dir_right=0x7f070008;
+        public static final int dir_left=0x7f070008;
+        public static final int dir_right=0x7f070009;
         public static final int dir_stop=0x7f07000a;
         public static final int discoverable=0x7f070016;
         public static final int exit_button=0x7f070002;
@@ -43,7 +43,7 @@ public final class R {
         public static final int paired_devices=0x7f070011;
         public static final int right_dir_back=0x7f07000d;
         public static final int right_loop_button=0x7f07000f;
-        public static final int textView1=0x7f070006;
+        public static final int textView1=0x7f070007;
         public static final int title_new_devices=0x7f070012;
         public static final int title_paired_devices=0x7f070010;
     }
@@ -61,7 +61,6 @@ public final class R {
         /**     app_name	
          */
         public static final int app_name=0x7f040000;
-        public static final int back_left=0x7f040010;
         public static final int bt_not_enabled=0x7f04001d;
         public static final int button_cancel=0x7f04001a;
         public static final int button_scan=0x7f040015;
@@ -89,6 +88,7 @@ public final class R {
         public static final int main_title=0x7f040004;
         public static final int none_found=0x7f040017;
         public static final int none_paired=0x7f040016;
+        public static final int right_back=0x7f040010;
         public static final int right_loop=0x7f040011;
         /**  Scan 
          */

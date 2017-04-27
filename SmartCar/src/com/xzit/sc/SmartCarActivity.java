@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -61,7 +62,7 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	// 已连接蓝牙设备的名称
 	private String deviceConnectedName;
 	
-	// 遥控命令协议
+	// 按钮遥控命令协议
 	String FORWARD = "1";
 	String BACK = "2";
 	String STOP = "0";
@@ -72,6 +73,14 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	String TOGGLE_XUNXIAN = "8";
 	String LEFT_BACK = "7";
 	String RIGHT_BACK = "9";
+	
+	// 重力感应遥控命令协议
+	TextView xViewA = null;
+	TextView yViewA = null;
+	TextView zViewA = null;	
+	private float X = 0;
+	private float Y = 0;
+	private float Z = 0;
 	
 	
 	
@@ -163,6 +172,12 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		// 软件开始运行日志输出
 		if(D) Log.e(TAG, TAG_LINE + "on start" + TAG_LINE);
 		
+		// 按钮布局
+//		findViewById(R.id.left_dir_back).setVisibility(View.INVISIBLE);
+//		findViewById(R.id.left_loop_button).setVisibility(View.INVISIBLE);
+//		findViewById(R.id.right_dir_back).setVisibility(View.INVISIBLE);
+//		findViewById(R.id.right_loop_button).setVisibility(View.INVISIBLE);
+		
 		// 请求启用蓝牙
 		if(!bluetoothAdapter.isEnabled()){
 			// 蓝牙适配器开启蓝牙 意图
@@ -206,11 +221,14 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		// 开启重力感应
 		case R.id.gravity_open:
 			Toast.makeText(this, "开启重力感应", Toast.LENGTH_SHORT).show();
+			Gravity();
+			sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 			break;
 		
 		// 关闭重力感应
 		case R.id.gravity_close:
 			Toast.makeText(this, "关闭重力感应", Toast.LENGTH_SHORT).show();
+			sensorManager.unregisterListener(sensorEventListener);
 			break;
 			
 		// 退出软件
@@ -305,15 +323,68 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 		addCommandToButton(R.id.dir_left, LEFT);
 		addCommandToButton(R.id.dir_right, RIGHT); 
 		addCommandToButton(R.id.dir_back, BACK);
-		addCommandToButton(R.id.left_loop_button, LEFT_LOOP);  
-		addCommandToButton(R.id.right_loop_button, RIGHT_LOOP);
-		addCommandToButton(R.id.left_dir_back, LEFT_BACK);
-		addCommandToButton(R.id.right_loop_button, RIGHT_BACK);
 		
 		// 初始化蓝牙服务类，进行蓝牙连接(Initialize the BTService to perform bluetooth connections)
 		bluetoothService = new BluetoothService(this, bluetoothHandler);
 	}
 	
+	/**
+	 * @Title: Gravity
+	 * @Description: TODO 读取重力传感器的值，并根据传感器的值控制车的方向
+	 * @param    
+	 * @return void 
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-28
+	 */
+	private void Gravity(){
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		sensorEventListener = new SensorEventListener() {
+			// 读取传感器的值
+			@Override
+			public void onSensorChanged(SensorEvent event) {
+				// 取值
+				X = event.values[SensorManager.DATA_X];
+    			Y = event.values[SensorManager.DATA_Y];
+    			Z = event.values[SensorManager.DATA_Z];	
+    			// 重力感应控制
+    			gravityControl();
+			}
+			
+			@Override
+			public void onAccuracyChanged(Sensor sensor, int accuracy) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+	}
+	
+	/**
+	 * @Title: gravityControl
+	 * @Description: TODO 根据陀螺仪的值控制智能车方向
+	 * @param    
+	 * @return void 
+	 * @throws
+	 * @author: 夏杰 1272570701@qq.com
+	 * @date: 2017-4-28
+	 */
+	public void gravityControl(){
+		// 手机正面朝上
+		if(Z >= 0) {
+			// y方向倾角
+			if(Y <= -2.0 && Y > -9.0) {
+				sendCommand(LEFT);
+			} else if(Y > 2.0 && Y < 9.0) {
+				sendCommand(RIGHT);
+			} else if(X < -2.0 && X > -9.0) {
+				sendCommand(FORWARD);
+			} else if(X > 2.0 && X < 9.0) {
+				sendCommand(BACK);
+			} else {
+				sendCommand(STOP);
+			}
+		}
+	}
 	
 	
 	private final Handler bluetoothHandler = new Handler(){
