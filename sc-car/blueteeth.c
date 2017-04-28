@@ -73,7 +73,7 @@ void UART_SER (void) interrupt 4	//串行中断服务程序
 	if( RI )						//判断是接收中断产生
 	{
 		RI = 0;						//标志位清零
-		rec_data = SBUF;			//读入缓冲区的值
+		rec_data = SBUF - 48;			//读入缓冲区的值
 	}	
 } 
 

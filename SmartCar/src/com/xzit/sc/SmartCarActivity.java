@@ -68,11 +68,6 @@ public class SmartCarActivity extends Activity implements OnClickListener {
 	String STOP = "0";
 	String LEFT = "3";
 	String RIGHT = "4";
-	String LEFT_LOOP = "5";
-	String RIGHT_LOOP = "6";
-	String TOGGLE_XUNXIAN = "8";
-	String LEFT_BACK = "7";
-	String RIGHT_BACK = "9";
 	
 	// 重力感应遥控命令协议
 	TextView xViewA = null;

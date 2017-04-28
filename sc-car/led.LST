@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 1   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE LED
@@ -62,7 +62,7 @@ line level    source
   53   1          uchar i = 8;
   54   1          LED_DC   = 1;
   55   1          LED_SCL  = 0;
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 2   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 2   
 
   56   1          
   57   1          while (i--)
@@ -126,7 +126,7 @@ line level    source
  115          void SetDisplayOffset(uchar ucData)
  116          {
  117   1          LED_WrCmd(0xD3);        // Set Display Offset
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 3   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 3   
 
  118   1          LED_WrCmd(ucData);      // Default => 0x00
  119   1      }
@@ -190,7 +190,7 @@ line level    source
  177   1          LED_WrCmd(ucData);      // Default => 0x22 (2 Display Clocks [Phase 2] / 2 Display Clocks [Phase 1])
  178   1                                  // D[3:0] => Phase 1 Period in 1~15 Display Clocks
  179   1                                  // D[7:4] => Phase 2 Period in 1~15 Display Clocks
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 4   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 4   
 
  180   1      }
  181          
@@ -254,7 +254,7 @@ line level    source
  239   2              LED_WrCmd(0x10);           //0x10+0~16表示将128列分成16组其地址所在第几组
  240   2              for(ucColumn = 0; ucColumn < 128; ucColumn++)
  241   2              {
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 5   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 5   
 
  242   3                  LED_WrDat(ucData);
  243   3              }
@@ -318,7 +318,7 @@ line level    source
  301              { 0x00, 0x14, 0x08, 0x3E, 0x08, 0x14 },   // *10
  302              { 0x00, 0x08, 0x08, 0x3E, 0x08, 0x08 },   // +11
  303              { 0x00, 0x00, 0x00, 0xA0, 0x60, 0x00 },   // ,12
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 6   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 6   
 
  304              { 0x00, 0x08, 0x08, 0x08, 0x08, 0x08 },   // -13
  305              { 0x00, 0x00, 0x60, 0x60, 0x00, 0x00 },   // .14
@@ -382,7 +382,7 @@ line level    source
  363              { 0x00, 0x7F, 0x08, 0x04, 0x04, 0x78 },   // h72
  364              { 0x00, 0x00, 0x44, 0x7D, 0x40, 0x00 },   // i73
  365              { 0x00, 0x40, 0x80, 0x84, 0x7D, 0x00 },   // j74
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 7   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 7   
 
  366              { 0x00, 0x7F, 0x10, 0x28, 0x44, 0x00 },   // k75
  367              { 0x00, 0x00, 0x41, 0x7F, 0x40, 0x00 },   // l76
@@ -446,7 +446,7 @@ line level    source
  425              0xC0,0x30,0xC8,0x28,0xE8,0x10,0xE0,0x00,0x07,0x18,0x27,0x24,0x23,0x14,0x0B,0x00,//@32
  426              0x00,0x00,0xC0,0x38,0xE0,0x00,0x00,0x00,0x20,0x3C,0x23,0x02,0x02,0x27,0x38,0x20,//A33
  427              0x08,0xF8,0x88,0x88,0x88,0x70,0x00,0x00,0x20,0x3F,0x20,0x20,0x20,0x11,0x0E,0x00,//B34
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 8   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 8   
 
  428              0xC0,0x30,0x08,0x08,0x08,0x08,0x38,0x00,0x07,0x18,0x20,0x20,0x20,0x10,0x08,0x00,//C35
  429              0x08,0xF8,0x08,0x08,0x08,0x10,0xE0,0x00,0x20,0x3F,0x20,0x20,0x20,0x10,0x0F,0x00,//D36
@@ -510,7 +510,7 @@ line level    source
  487              0x00,0x06,0x01,0x01,0x02,0x02,0x04,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,//~94
  488          };
  489          
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 9   
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 9   
 
  490          /*****************************************************************************
  491           函 数 名  : LED_P8x16Str
@@ -574,7 +574,7 @@ line level    source
  549   2              ucIdxX = 0;
  550   2              ucIdxY++;
  551   2          }
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 10  
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 10  
 
  552   1          
  553   1          LED_SetPos(ucIdxX, ucIdxY);
@@ -638,7 +638,7 @@ line level    source
  611           功能描述  : 将一个Char型数转换成3位数进行显示
  612           输入参数  : UCHAR8 ucIdxX    ucIdxX的范围为0～122
  613                       UCHAR8 ucIdxY    ucIdxY的范围为0～7
-C51 COMPILER V9.00   LED                                                                   04/25/2017 09:37:44 PAGE 11  
+C51 COMPILER V9.00   LED                                                                   04/28/2017 11:23:03 PAGE 11  
 
  614                       CHAR8 cData      cData为需要转化显示的数值 -128~127
  615           输出参数  : none

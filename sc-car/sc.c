@@ -23,18 +23,48 @@ void main()
 
 	DelayMs(500);
 
-	// 
+	// 液晶布局
 	led_wirte_str(20, 0, "xzit-Xia Jie");
 
 	while(1)
 	{
-		// 电平驱动左电机正转
-		motor_left_in = MOTOR_ON;
-		motor_left_out = MOTOR_OFF;
-		// 电平驱动右电机正转	
-		motor_right_in = MOTOR_ON;
-		motor_right_out = MOTOR_OFF;
-		steer_duty = steer_left_duty;
+		// 停车
+		if(rec_data == 0)
+		{
+			motor_left_stop();
+			motor_right_stop();
+			steer_middle();			
+		} 
+		// 前进
+		else if(rec_data == 1) 
+		{
+			motor_left_forward(100);
+			motor_right_forward(100);
+			steer_middle();	
+		}
+		// 倒车
+		else if(rec_data == 2) 
+		{
+			motor_left_back(100);
+			motor_right_back(100);
+			steer_middle();	
+		}
+		// 左转
+		else if(rec_data == 3) 
+		{
+			motor_left_forward(100);
+			motor_right_forward(100);
+			steer_left();	
+		}
+		// 右转
+		else if(rec_data == 4)
+		{
+			motor_left_forward(100);
+			motor_right_forward(100);
+			steer_right();
+		}
+
+		// 液晶刷新
 		if(led_refresh_flag == 1)
 		{
 			led_refresh_flag = 0;

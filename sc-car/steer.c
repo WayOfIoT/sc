@@ -11,7 +11,7 @@
 uchar steer_pwm_t = 200, steer_pwm_counter = 0;
 
 // 舵机PWM占空比,范围:5/200~25/200 
-uchar steer_left_duty = 14, steer_right_duty = 18, steer_middle_duty = 16, steer_duty = 0;
+uchar steer_left_duty = 13, steer_right_duty = 17, steer_middle_duty = 15, steer_duty = 0;
 
 /*-----------------------------------------------
   TODO：舵机初始化

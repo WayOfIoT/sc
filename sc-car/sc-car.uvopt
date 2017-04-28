@@ -172,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
+      <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>15</TopLine>
-      <CurrentLine>34</CurrentLine>
+      <TopLine>51</TopLine>
+      <CurrentLine>76</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\blueteeth.c</PathWithFileName>
       <FilenameWithoutPath>blueteeth.c</FilenameWithoutPath>
@@ -200,7 +200,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>37</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
       <CurrentLine>1</CurrentLine>
@@ -214,10 +214,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>11</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>19</TopLine>
-      <CurrentLine>22</CurrentLine>
+      <TopLine>22</TopLine>
+      <CurrentLine>36</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\sc.c</PathWithFileName>
       <FilenameWithoutPath>sc.c</FilenameWithoutPath>
@@ -228,10 +228,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>42</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>11</CurrentLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\steer.c</PathWithFileName>
       <FilenameWithoutPath>steer.c</FilenameWithoutPath>
@@ -242,10 +242,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>35</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>12</TopLine>
-      <CurrentLine>31</CurrentLine>
+      <TopLine>30</TopLine>
+      <CurrentLine>30</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
@@ -1740,13 +1740,13 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>8</ActiveTab>
+      <ActiveTab>7</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\sc.c</Name>
-          <ColumnNumber>11</ColumnNumber>
-          <TopLine>19</TopLine>
-          <CurrentLine>22</CurrentLine>
+          <ColumnNumber>12</ColumnNumber>
+          <TopLine>22</TopLine>
+          <CurrentLine>36</CurrentLine>
         </Doc>
         <Doc>
           <Name>SC.H</Name>
@@ -1756,9 +1756,9 @@
         </Doc>
         <Doc>
           <Name>.\timer.c</Name>
-          <ColumnNumber>8</ColumnNumber>
-          <TopLine>12</TopLine>
-          <CurrentLine>31</CurrentLine>
+          <ColumnNumber>35</ColumnNumber>
+          <TopLine>30</TopLine>
+          <CurrentLine>30</CurrentLine>
         </Doc>
         <Doc>
           <Name>TIMER.H</Name>
@@ -1768,9 +1768,9 @@
         </Doc>
         <Doc>
           <Name>.\steer.c</Name>
-          <ColumnNumber>42</ColumnNumber>
+          <ColumnNumber>6</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>11</CurrentLine>
+          <CurrentLine>17</CurrentLine>
         </Doc>
         <Doc>
           <Name>STEER.H</Name>
@@ -1780,21 +1780,21 @@
         </Doc>
         <Doc>
           <Name>.\motor.c</Name>
-          <ColumnNumber>1</ColumnNumber>
+          <ColumnNumber>37</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
           <Name>MOTOR.H</Name>
-          <ColumnNumber>42</ColumnNumber>
-          <TopLine>43</TopLine>
-          <CurrentLine>51</CurrentLine>
+          <ColumnNumber>69</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>10</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\blueteeth.c</Name>
-          <ColumnNumber>3</ColumnNumber>
-          <TopLine>15</TopLine>
-          <CurrentLine>34</CurrentLine>
+          <ColumnNumber>22</ColumnNumber>
+          <TopLine>51</TopLine>
+          <CurrentLine>76</CurrentLine>
         </Doc>
         <Doc>
           <Name>BLUETEETH.H</Name>
