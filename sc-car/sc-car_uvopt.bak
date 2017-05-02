@@ -200,10 +200,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>20</ColumnNumber>
+      <ColumnNumber>37</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>67</TopLine>
-      <CurrentLine>67</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
@@ -216,8 +216,8 @@
       <Focus>0</Focus>
       <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>16</TopLine>
-      <CurrentLine>26</CurrentLine>
+      <TopLine>22</TopLine>
+      <CurrentLine>36</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\sc.c</PathWithFileName>
       <FilenameWithoutPath>sc.c</FilenameWithoutPath>
@@ -228,10 +228,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>15</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>70</TopLine>
-      <CurrentLine>70</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\steer.c</PathWithFileName>
       <FilenameWithoutPath>steer.c</FilenameWithoutPath>
@@ -1740,13 +1740,13 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>0</ActiveTab>
+      <ActiveTab>7</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\sc.c</Name>
           <ColumnNumber>12</ColumnNumber>
-          <TopLine>16</TopLine>
-          <CurrentLine>26</CurrentLine>
+          <TopLine>22</TopLine>
+          <CurrentLine>36</CurrentLine>
         </Doc>
         <Doc>
           <Name>SC.H</Name>
@@ -1768,9 +1768,9 @@
         </Doc>
         <Doc>
           <Name>.\steer.c</Name>
-          <ColumnNumber>15</ColumnNumber>
-          <TopLine>70</TopLine>
-          <CurrentLine>70</CurrentLine>
+          <ColumnNumber>6</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>17</CurrentLine>
         </Doc>
         <Doc>
           <Name>STEER.H</Name>
@@ -1780,15 +1780,15 @@
         </Doc>
         <Doc>
           <Name>.\motor.c</Name>
-          <ColumnNumber>20</ColumnNumber>
-          <TopLine>67</TopLine>
-          <CurrentLine>67</CurrentLine>
+          <ColumnNumber>37</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
           <Name>MOTOR.H</Name>
-          <ColumnNumber>42</ColumnNumber>
-          <TopLine>43</TopLine>
-          <CurrentLine>51</CurrentLine>
+          <ColumnNumber>69</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>10</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\blueteeth.c</Name>

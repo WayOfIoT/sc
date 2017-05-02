@@ -172,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>22</ColumnNumber>
+      <ColumnNumber>107</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>51</TopLine>
-      <CurrentLine>76</CurrentLine>
+      <TopLine>39</TopLine>
+      <CurrentLine>45</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\blueteeth.c</PathWithFileName>
       <FilenameWithoutPath>blueteeth.c</FilenameWithoutPath>
@@ -200,10 +200,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>37</ColumnNumber>
+      <ColumnNumber>32</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>18</TopLine>
+      <CurrentLine>18</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
@@ -228,10 +228,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>6</ColumnNumber>
+      <ColumnNumber>32</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>17</CurrentLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\steer.c</PathWithFileName>
       <FilenameWithoutPath>steer.c</FilenameWithoutPath>
@@ -242,10 +242,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>35</ColumnNumber>
+      <ColumnNumber>103</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>30</TopLine>
-      <CurrentLine>30</CurrentLine>
+      <TopLine>60</TopLine>
+      <CurrentLine>60</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
@@ -1740,7 +1740,7 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>7</ActiveTab>
+      <ActiveTab>8</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\sc.c</Name>
@@ -1756,9 +1756,9 @@
         </Doc>
         <Doc>
           <Name>.\timer.c</Name>
-          <ColumnNumber>35</ColumnNumber>
-          <TopLine>30</TopLine>
-          <CurrentLine>30</CurrentLine>
+          <ColumnNumber>103</ColumnNumber>
+          <TopLine>60</TopLine>
+          <CurrentLine>60</CurrentLine>
         </Doc>
         <Doc>
           <Name>TIMER.H</Name>
@@ -1768,33 +1768,33 @@
         </Doc>
         <Doc>
           <Name>.\steer.c</Name>
-          <ColumnNumber>6</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>17</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>STEER.H</Name>
-          <ColumnNumber>51</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>8</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\motor.c</Name>
-          <ColumnNumber>37</ColumnNumber>
+          <ColumnNumber>32</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
+          <Name>STEER.H</Name>
+          <ColumnNumber>30</ColumnNumber>
+          <TopLine>7</TopLine>
+          <CurrentLine>24</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\motor.c</Name>
+          <ColumnNumber>32</ColumnNumber>
+          <TopLine>18</TopLine>
+          <CurrentLine>18</CurrentLine>
+        </Doc>
+        <Doc>
           <Name>MOTOR.H</Name>
-          <ColumnNumber>69</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>10</CurrentLine>
+          <ColumnNumber>29</ColumnNumber>
+          <TopLine>61</TopLine>
+          <CurrentLine>61</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\blueteeth.c</Name>
-          <ColumnNumber>22</ColumnNumber>
-          <TopLine>51</TopLine>
-          <CurrentLine>76</CurrentLine>
+          <ColumnNumber>107</ColumnNumber>
+          <TopLine>39</TopLine>
+          <CurrentLine>45</CurrentLine>
         </Doc>
         <Doc>
           <Name>BLUETEETH.H</Name>
