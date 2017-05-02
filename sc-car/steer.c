@@ -44,12 +44,15 @@ void steer_control(STEER_DIR steer_dir)
 	switch(steer_dir)
 	{
 		case steer_dir_left:
+			// 舵机左转
 			steer_left();
 			break;
 		case steer_dir_middle:
+			// 舵机右转
 			steer_right();
 			break;
 		case steer_dir_right:
+			// 舵机中置
 			steer_middle();
 			break;
 	}
