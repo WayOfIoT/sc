@@ -1,4 +1,7 @@
-# introduction of smart car
+# SmartCar
+
+[![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)](https://github.com/blackist/ar)
+[![](https://img.shields.io/badge/keil-4-blue.svg)]()
 
 ---
 
@@ -11,6 +14,12 @@ Project Smart Car. Base on blueteeth communication, this project enable an andro
 - Android Programming
 - 51SCM programming based on C
 - Serial Port Communication 
+
+## Structure
+
+sc-car is for 51SCM on smart car.
+
+SmartCar is for client of android device.
  
 ## Running Shot
 
